@@ -5,32 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07090d">
 
-<title>Manifestation OS — Identity, Action & Reality Feedback System</title>
+<title>Manifestation OS — Adaptive Reality Engine</title>
 
-<meta
-  name="description"
-  content="Manifestation OS is an identity-based personal operating system for turning intention into action, evidence, learning, and measurable progress."
->
+<meta name="description"
+content="Manifestation OS is an adaptive personal operating system that transforms intention into identity, strategy, action, evidence, experiments, feedback, and measurable progress.">
 
 <style>
-
 :root{
   --bg:#07090d;
-  --surface:#0c1017;
-  --surface2:#121822;
-  --surface3:#18212d;
-  --border:#26303d;
-
+  --surface:#0d1118;
+  --surface2:#121923;
+  --surface3:#192331;
+  --border:#273241;
   --text:#f3f6fa;
-  --muted:#8792a3;
-
+  --muted:#8793a5;
   --green:#b8ff6a;
-  --blue:#79a7ff;
+  --blue:#78a8ff;
   --yellow:#ffd166;
   --red:#ff7182;
-
+  --purple:#c69cff;
   --radius:18px;
-  --max:1250px;
+  --max:1280px;
 }
 
 *{
@@ -45,41 +40,45 @@ html{
 
 body{
   background:
-    radial-gradient(
-      circle at 10% 0%,
-      rgba(121,167,255,.09),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 5%,
-      rgba(184,255,106,.07),
-      transparent 30%
-    ),
+    radial-gradient(circle at 5% 0%,rgba(120,168,255,.10),transparent 30%),
+    radial-gradient(circle at 95% 5%,rgba(184,255,106,.08),transparent 30%),
     var(--bg);
-
   color:var(--text);
-
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   line-height:1.55;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
   font:inherit;
 }
 
 button{
   cursor:pointer;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:13px 14px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:11px;
+  outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:var(--green);
+}
+
+textarea{
+  min-height:115px;
+  resize:vertical;
+}
+
+button{
+  border:0;
 }
 
 a{
@@ -116,6 +115,9 @@ a{
   color:var(--red);
 }
 
+.purple{
+  color:var(--purple);
+}
 
 /* NAV */
 
@@ -123,27 +125,23 @@ a{
   position:sticky;
   top:0;
   z-index:1000;
-
   backdrop-filter:blur(18px);
-
-  background:rgba(7,9,13,.84);
-
+  background:rgba(7,9,13,.86);
   border-bottom:1px solid var(--border);
 }
 
 .topbar-inner{
   min-height:64px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:20px;
 }
 
 .brand{
   font-weight:950;
-  letter-spacing:-.04em;
+  letter-spacing:-.045em;
+  white-space:nowrap;
 }
 
 .brand span{
@@ -153,131 +151,99 @@ a{
 .nav{
   display:flex;
   gap:18px;
-
   overflow-x:auto;
 }
 
 .nav a{
   white-space:nowrap;
-
   color:var(--muted);
-
-  font-size:.78rem;
-  font-weight:800;
+  font-size:.76rem;
+  font-weight:850;
 }
 
 .nav a:hover{
   color:var(--green);
 }
 
-
 /* HERO */
 
 .hero{
-  padding:95px 0 65px;
+  padding:90px 0 60px;
 }
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.4fr .6fr;
+  grid-template-columns:1.25fr .75fr;
   gap:35px;
   align-items:end;
 }
 
 .eyebrow{
   color:var(--green);
-
-  font-size:.7rem;
+  font-size:.68rem;
   font-weight:950;
-
-  letter-spacing:.2em;
-
+  letter-spacing:.19em;
   text-transform:uppercase;
-
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 .hero h1{
-  font-size:clamp(3.5rem,9vw,8rem);
-
+  font-size:clamp(3.3rem,9vw,8rem);
   line-height:.84;
-
-  letter-spacing:-.08em;
+  letter-spacing:-.09em;
 }
 
 .hero p{
-  max-width:760px;
-
-  margin-top:28px;
-
+  max-width:780px;
+  margin-top:27px;
   color:var(--muted);
-
-  font-size:1.12rem;
+  font-size:1.1rem;
 }
 
 .hero-loop{
   padding:25px;
-
   background:var(--surface);
-
   border:1px solid var(--border);
-
   border-radius:var(--radius);
-
   color:var(--green);
-
   font-weight:900;
-
-  line-height:1.9;
-
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.25);
+  line-height:1.8;
 }
-
 
 /* SECTIONS */
 
 section{
-  padding:55px 0;
+  padding:58px 0;
 }
 
 .section-header{
-  margin-bottom:28px;
+  margin-bottom:27px;
 }
 
 .section-number{
   color:var(--green);
-
-  font-size:.68rem;
+  font-size:.67rem;
   font-weight:950;
-
-  letter-spacing:.17em;
-
+  letter-spacing:.18em;
   margin-bottom:8px;
 }
 
 h2{
-  font-size:clamp(2rem,5vw,3.7rem);
-
+  font-size:clamp(2rem,5vw,3.6rem);
   line-height:.95;
-
-  letter-spacing:-.06em;
+  letter-spacing:-.065em;
 }
 
 h3{
-  font-size:1.05rem;
-
+  font-size:1.08rem;
   margin-bottom:7px;
 }
 
 .lead{
-  max-width:800px;
-
+  max-width:820px;
   margin-top:13px;
-
   color:var(--muted);
 }
-
 
 /* CARDS */
 
@@ -293,79 +259,80 @@ h3{
 
 .card{
   padding:24px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(18,24,34,.98),
-      rgba(9,12,17,.98)
-    );
-
+  background:linear-gradient(145deg,rgba(18,25,35,.98),rgba(8,11,16,.98));
   border:1px solid var(--border);
-
   border-radius:var(--radius);
-
   transition:.2s;
 }
 
 .card:hover{
+  border-color:rgba(184,255,106,.35);
   transform:translateY(-2px);
-
-  border-color:
-    rgba(184,255,106,.35);
 }
 
+/* COMMAND CENTER */
+
+.command{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:16px;
+}
+
+.command-box{
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+}
+
+.command-action{
+  font-size:1.75rem;
+  line-height:1.12;
+  letter-spacing:-.04em;
+}
+
+.command-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:15px;
+}
 
 /* METRICS */
 
 .dashboard{
   display:grid;
-
-  grid-template-columns:
-    repeat(6,1fr);
-
-  gap:12px;
+  grid-template-columns:repeat(7,1fr);
+  gap:11px;
 }
 
 .metric{
-  padding:20px;
-
+  padding:18px;
   background:var(--surface);
-
   border:1px solid var(--border);
-
   border-radius:var(--radius);
 }
 
 .metric-label{
   color:var(--muted);
-
-  font-size:.68rem;
-  font-weight:850;
-
+  font-size:.63rem;
+  font-weight:900;
   text-transform:uppercase;
   letter-spacing:.08em;
 }
 
 .metric-value{
   margin-top:5px;
-
-  font-size:1.9rem;
-
+  font-size:1.75rem;
   font-weight:950;
-
   letter-spacing:-.05em;
 }
-
 
 /* FORMS */
 
 .form-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:16px;
 }
 
@@ -381,68 +348,27 @@ h3{
 
 label{
   color:var(--muted);
-
-  font-size:.72rem;
-  font-weight:850;
-
+  font-size:.68rem;
+  font-weight:900;
   text-transform:uppercase;
   letter-spacing:.08em;
 }
-
-input,
-textarea,
-select{
-  width:100%;
-
-  padding:13px 14px;
-
-  color:var(--text);
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  border-radius:11px;
-
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--green);
-}
-
-textarea{
-  min-height:115px;
-
-  resize:vertical;
-}
-
 
 /* BUTTONS */
 
 .button-row{
   display:flex;
-
   flex-wrap:wrap;
-
   gap:9px;
-
   margin-top:18px;
 }
 
 .button{
   padding:11px 16px;
-
-  color:var(--text);
-
   background:var(--surface2);
-
+  color:var(--text);
   border:1px solid var(--border);
-
   border-radius:10px;
-
   font-weight:850;
 }
 
@@ -452,233 +378,40 @@ textarea{
 
 .button.primary{
   background:var(--green);
-
   color:#071006;
-
   border-color:var(--green);
 }
 
 .button.blue{
   background:var(--blue);
-
   color:#07101e;
-
   border-color:var(--blue);
+}
+
+.button.purple{
+  background:var(--purple);
+  color:#130b1e;
+  border-color:var(--purple);
 }
 
 .button.danger{
   color:var(--red);
 }
 
-
-/* PROGRESS */
-
-.progress{
-  width:100%;
-
-  height:8px;
-
-  margin-top:14px;
-
-  overflow:hidden;
-
-  background:var(--surface3);
-
-  border-radius:999px;
-}
-
-.progress-bar{
-  width:0%;
-
-  height:100%;
-
-  background:var(--green);
-
-  border-radius:inherit;
-
-  transition:.4s;
-}
-
-
-/* DAILY COMMAND */
-
-.command{
-  display:grid;
-
-  grid-template-columns:
-    1.2fr .8fr;
-
-  gap:16px;
-}
-
-.command-box{
-  padding:28px;
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius);
-}
-
-.command-box h3{
-  font-size:1.4rem;
-}
-
-.command-action{
-  font-size:1.7rem;
-
-  line-height:1.15;
-
-  letter-spacing:-.04em;
-}
-
-
-/* SCORE */
-
-.score-layout{
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:18px;
-}
-
-.score-row{
-  display:grid;
-
-  grid-template-columns:1fr 100px;
-
-  align-items:center;
-
-  gap:20px;
-
-  padding:14px 0;
-
-  border-bottom:1px solid var(--border);
-}
-
-.score-row:last-child{
-  border-bottom:none;
-}
-
-.score-display{
-  min-height:100%;
-
-  display:flex;
-  flex-direction:column;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:40px;
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(184,255,106,.09),
-      transparent 65%
-    );
-
-  text-align:center;
-}
-
-.score-number{
-  font-size:6rem;
-
-  line-height:.9;
-
-  color:var(--green);
-
-  font-weight:950;
-
-  letter-spacing:-.09em;
-}
-
-
-/* TABLE */
-
-.table{
-  width:100%;
-
-  border-collapse:collapse;
-}
-
-.table th,
-.table td{
-  padding:13px;
-
-  text-align:left;
-
-  border-bottom:1px solid var(--border);
-}
-
-.table th{
-  color:var(--muted);
-
-  font-size:.7rem;
-
-  text-transform:uppercase;
-}
-
-
-/* LIST */
-
-.list{
-  display:grid;
-
-  gap:10px;
-}
-
-.list-item{
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:15px;
-
-  padding:15px 17px;
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  border-radius:11px;
-}
-
-.list-item button{
-  border:none;
-
-  background:none;
-
-  color:var(--red);
-
-  font-weight:950;
-}
-
-
 /* BADGES */
 
 .badge{
   display:inline-flex;
-
   padding:5px 9px;
-
   border-radius:999px;
-
-  font-size:.65rem;
-
+  font-size:.62rem;
   font-weight:900;
-
   text-transform:uppercase;
+  margin-right:5px;
 }
 
 .badge.fact{
-  background:rgba(121,167,255,.12);
+  background:rgba(120,168,255,.12);
   color:var(--blue);
 }
 
@@ -692,28 +425,140 @@ textarea{
   color:var(--green);
 }
 
+.badge.high{
+  background:rgba(184,255,106,.12);
+  color:var(--green);
+}
+
+.badge.medium{
+  background:rgba(255,209,102,.12);
+  color:var(--yellow);
+}
+
+.badge.low{
+  background:rgba(255,113,130,.12);
+  color:var(--red);
+}
+
+/* PROGRESS */
+
+.progress{
+  width:100%;
+  height:8px;
+  margin-top:13px;
+  overflow:hidden;
+  background:var(--surface3);
+  border-radius:999px;
+}
+
+.progress-bar{
+  width:0;
+  height:100%;
+  background:var(--green);
+  border-radius:999px;
+  transition:.4s;
+}
+
+/* LEVERAGE */
+
+.leverage-score{
+  font-size:3rem;
+  font-weight:950;
+  color:var(--green);
+  letter-spacing:-.07em;
+}
+
+.formula{
+  padding:14px;
+  margin-top:14px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:11px;
+  color:var(--muted);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.78rem;
+}
+
+/* SCORE */
+
+.score-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.score-row{
+  display:grid;
+  grid-template-columns:1fr 100px;
+  align-items:center;
+  gap:20px;
+  padding:14px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.score-row:last-child{
+  border-bottom:none;
+}
+
+.score-display{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:radial-gradient(circle,rgba(184,255,106,.09),transparent 65%);
+  text-align:center;
+}
+
+.score-number{
+  font-size:6rem;
+  line-height:.9;
+  color:var(--green);
+  font-weight:950;
+  letter-spacing:-.09em;
+}
+
+/* LIST */
+
+.list{
+  display:grid;
+  gap:10px;
+}
+
+.list-item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px 17px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:11px;
+}
+
+.list-item button{
+  background:none;
+  color:var(--red);
+  font-weight:950;
+  font-size:1.1rem;
+}
 
 /* PROTOCOL */
 
 .protocol{
   overflow:hidden;
-
   border:1px solid var(--border);
-
   border-radius:var(--radius);
-
   background:var(--surface);
 }
 
 .protocol-row{
   display:grid;
-
-  grid-template-columns:100px 1fr;
-
+  grid-template-columns:110px 1fr;
   gap:20px;
-
   padding:18px 22px;
-
   border-bottom:1px solid var(--border);
 }
 
@@ -723,30 +568,22 @@ textarea{
 
 .protocol-time{
   color:var(--green);
-
-  font-size:.72rem;
-
+  font-size:.7rem;
   font-weight:950;
 }
-
 
 /* LOOP */
 
 .loop{
   max-width:800px;
-
   margin:auto;
-
   display:grid;
 }
 
 .loop-step{
   padding:18px;
-
   text-align:center;
-
   background:var(--surface);
-
   border:1px solid var(--border);
 }
 
@@ -756,82 +593,77 @@ textarea{
 
 .arrow{
   height:21px;
-
   color:var(--muted);
-
   text-align:center;
-
   line-height:21px;
 }
 
+/* TABLE */
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.table th,
+.table td{
+  padding:13px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+
+.table th{
+  color:var(--muted);
+  font-size:.68rem;
+  text-transform:uppercase;
+}
 
 /* QUOTE */
 
 .quote{
   margin-top:28px;
-
   padding:16px 0 16px 22px;
-
   border-left:3px solid var(--green);
-
-  font-size:1.15rem;
-
+  font-size:1.12rem;
   font-weight:750;
 }
-
 
 /* TOAST */
 
 .toast{
   position:fixed;
-
   right:20px;
   bottom:20px;
-
   z-index:2000;
-
   padding:13px 17px;
-
   background:var(--surface3);
-
   border:1px solid var(--border);
-
   border-radius:12px;
-
   opacity:0;
-
   transform:translateY(10px);
-
   pointer-events:none;
-
   transition:.25s;
 }
 
 .toast.show{
   opacity:1;
-
   transform:translateY(0);
 }
-
 
 /* FOOTER */
 
 footer{
   padding:100px 0;
-
   border-top:1px solid var(--border);
-
   text-align:center;
 }
 
+/* RESPONSIVE */
 
-/* MOBILE */
-
-@media(max-width:950px){
+@media(max-width:1050px){
 
   .dashboard{
-    grid-template-columns:
-      repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
   }
 
   .hero-grid,
@@ -842,7 +674,7 @@ footer{
 
 }
 
-@media(max-width:700px){
+@media(max-width:750px){
 
   .grid,
   .grid.two,
@@ -851,8 +683,7 @@ footer{
   }
 
   .dashboard{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .field.full{
@@ -881,94 +712,86 @@ footer{
   }
 
 }
-
 </style>
 </head>
 
-
 <body>
 
-
 <header class="topbar">
+  <div class="container topbar-inner">
 
-<div class="container topbar-inner">
+    <a href="#top" class="brand">
+      MANIFESTATION <span>OS</span>
+    </a>
 
-<a href="#top" class="brand">
-MANIFESTATION <span>OS</span>
-</a>
+    <nav class="nav">
+      <a href="#command">Command</a>
+      <a href="#direction">Direction</a>
+      <a href="#identity">Identity</a>
+      <a href="#strategy">Strategy</a>
+      <a href="#execution">Execution</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#review">Review</a>
+    </nav>
 
-<nav class="nav">
-<a href="#dashboard">Command</a>
-<a href="#goal">Goal</a>
-<a href="#identity">Identity</a>
-<a href="#daily">Daily</a>
-<a href="#evidence">Evidence</a>
-<a href="#experiments">Experiments</a>
-<a href="#review">Review</a>
-</nav>
-
-</div>
-
+  </div>
 </header>
 
-
 <main id="top">
-
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="container hero-grid">
+  <div class="container hero-grid">
 
-<div>
+    <div>
 
-<div class="eyebrow">
-Personal Reality Operating System
-</div>
+      <div class="eyebrow">
+        Adaptive Reality Engine
+      </div>
 
-<h1>
-MANIFESTATION<br>
-OS
-</h1>
+      <h1>
+        MANIFESTATION<br>
+        OS
+      </h1>
 
-<p>
-Turn intention into identity, identity into behavior,
-behavior into evidence, evidence into learning,
-and learning into a better strategy.
-</p>
+      <p>
+        A personal operating system for transforming intention into
+        identity, strategy, action, evidence, experimentation,
+        feedback and compounding progress.
+      </p>
 
-</div>
+    </div>
 
-<div class="hero-loop">
+    <div class="hero-loop">
 
-DESIRE<br>
-↓<br>
-IDENTITY<br>
-↓<br>
-STATE<br>
-↓<br>
-ACTION<br>
-↓<br>
-EVIDENCE<br>
-↓<br>
-OUTCOME<br>
-↓<br>
-FEEDBACK<br>
-↓<br>
-ADAPT<br>
-↺
+      INTENTION<br>
+      ↓<br>
+      IDENTITY<br>
+      ↓<br>
+      STRATEGY<br>
+      ↓<br>
+      ACTION<br>
+      ↓<br>
+      EVIDENCE<br>
+      ↓<br>
+      DIAGNOSIS<br>
+      ↓<br>
+      ADAPTATION<br>
+      ↺
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- COMMAND CENTER -->
+<!-- COMMAND -->
 
-<section id="dashboard">
+<section id="command">
 
 <div class="container">
 
@@ -979,12 +802,12 @@ ADAPT<br>
 </div>
 
 <h2>
-Operate from one screen.
+What should I do next?
 </h2>
 
 <p class="lead">
-The command center answers the most important question:
-what should happen next?
+The command center converts your current objective, bottleneck,
+available actions and evidence into a practical next move.
 </p>
 
 </div>
@@ -995,6 +818,11 @@ what should happen next?
 <div class="metric">
 <div class="metric-label">M-Score</div>
 <div class="metric-value" id="metricScore">0</div>
+</div>
+
+<div class="metric">
+<div class="metric-label">Goal Progress</div>
+<div class="metric-value" id="metricProgress">0%</div>
 </div>
 
 <div class="metric">
@@ -1018,8 +846,8 @@ what should happen next?
 </div>
 
 <div class="metric">
-<div class="metric-label">Progress</div>
-<div class="metric-value" id="metricProgress">0%</div>
+<div class="metric-label">Leverage</div>
+<div class="metric-value" id="metricLeverage">0</div>
 </div>
 
 </div>
@@ -1030,23 +858,45 @@ what should happen next?
 <div class="command-box">
 
 <div class="eyebrow">
-Today's highest leverage
+Highest-Leverage Next Action
 </div>
 
 <div
 class="command-action"
 id="commandAction"
 >
-Define your highest-leverage action.
+Define your objective and candidate actions.
+</div>
+
+<div class="command-meta">
+
+<span class="badge high">
+Recommended
+</span>
+
+<span
+class="badge"
+id="commandScore"
+>
+Score: 0
+</span>
+
 </div>
 
 <div class="button-row">
 
 <button
 class="button primary"
-onclick="completeAction()"
+onclick="executeRecommendation()"
 >
-Complete Action
+Execute
+</button>
+
+<button
+class="button blue"
+onclick="generateRecommendation()"
+>
+Recalculate
 </button>
 
 </div>
@@ -1057,7 +907,7 @@ Complete Action
 <div class="command-box">
 
 <div class="eyebrow">
-Current bottleneck
+Current Bottleneck
 </div>
 
 <h3 id="bottleneck">
@@ -1069,8 +919,12 @@ class="muted"
 id="bottleneckText"
 style="margin-top:8px;"
 >
-The weakest component determines where improvement has the highest leverage.
+Calculating the weakest part of your current system.
 </p>
+
+<div class="formula">
+Impact × Probability × Leverage ÷ Effort
+</div>
 
 </div>
 
@@ -1081,25 +935,25 @@ The weakest component determines where improvement has the highest leverage.
 </section>
 
 
-<!-- GOAL -->
+<!-- DIRECTION -->
 
-<section id="goal">
+<section id="direction">
 
 <div class="container">
 
 <div class="section-header">
 
 <div class="section-number">
-02 — DESIRE ENGINE
+02 — DIRECTION ENGINE
 </div>
 
 <h2>
-Define the target.
+Choose the destination.
 </h2>
 
 <p class="lead">
-A vague desire creates vague behavior.
-Specify the destination and the evidence that would indicate progress.
+A desire becomes strategically useful when it has a clear outcome,
+metric, horizon and definition of success.
 </p>
 
 </div>
@@ -1139,7 +993,7 @@ placeholder="Why does this matter?"
 
 <textarea
 id="endStateInput"
-placeholder="Describe the fulfilled state."
+placeholder="What would fulfilled look like?"
 ></textarea>
 
 </div>
@@ -1151,7 +1005,7 @@ placeholder="Describe the fulfilled state."
 
 <input
 id="successMetricInput"
-placeholder="What measurable result indicates progress?"
+placeholder="What number or observable result defines success?"
 >
 
 </div>
@@ -1159,7 +1013,33 @@ placeholder="What measurable result indicates progress?"
 
 <div class="field">
 
-<label>Deadline / horizon</label>
+<label>Current value</label>
+
+<input
+id="currentValueInput"
+type="number"
+placeholder="0"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>Target value</label>
+
+<input
+id="targetValueInput"
+type="number"
+placeholder="100"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>Deadline</label>
 
 <input
 id="deadlineInput"
@@ -1180,7 +1060,35 @@ onclick="saveState()"
 Save Objective
 </button>
 
+<button
+class="button blue"
+onclick="calculateProgress()"
+>
+Calculate Trajectory
+</button>
+
 </div>
+
+
+<div
+class="progress"
+style="margin-top:20px;"
+>
+
+<div
+class="progress-bar"
+id="goalProgressBar"
+></div>
+
+</div>
+
+<p
+class="muted"
+id="trajectoryText"
+style="margin-top:8px;"
+>
+Define current and target values.
+</p>
 
 </div>
 
@@ -1206,8 +1114,8 @@ Become the cause.
 </h2>
 
 <p class="lead">
-The objective is not merely to imagine an outcome.
-Construct the identity whose repeated behavior makes that outcome more likely.
+Define the identity, standards and behaviors that make your desired
+trajectory increasingly natural.
 </p>
 
 </div>
@@ -1223,7 +1131,7 @@ Construct the identity whose repeated behavior makes that outcome more likely.
 
 <textarea
 id="identityInput"
-placeholder="I am a disciplined builder who consistently creates valuable assets."
+placeholder="I am a disciplined builder who creates valuable assets."
 ></textarea>
 
 </div>
@@ -1235,7 +1143,7 @@ placeholder="I am a disciplined builder who consistently creates valuable assets
 
 <textarea
 id="standardsInput"
-placeholder="What standards does this identity operate by?"
+placeholder="What standards does this identity refuse to violate?"
 ></textarea>
 
 </div>
@@ -1259,7 +1167,7 @@ placeholder="What assumptions support this identity?"
 
 <textarea
 id="stateInput"
-placeholder="Calm certainty, ownership, curiosity, discipline..."
+placeholder="Calm certainty, curiosity, discipline, abundance..."
 ></textarea>
 
 </div>
@@ -1276,14 +1184,21 @@ onclick="saveState()"
 Save Identity
 </button>
 
-</div>
+<button
+class="button blue"
+onclick="generateIdentityBehavior()"
+>
+Generate Behavior
+</button>
 
 </div>
 
 
-<div class="quote">
-Do not ask only, "How do I get the outcome?"
-Ask, "Who would naturally produce this outcome?"
+<div
+id="identityBehavior"
+class="quote hidden"
+></div>
+
 </div>
 
 </div>
@@ -1291,7 +1206,103 @@ Ask, "Who would naturally produce this outcome?"
 </section>
 
 
-<!-- ASSUMPTIONS -->
+<!-- STRATEGY -->
+
+<section id="strategy">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="section-number">
+04 — STRATEGY ENGINE
+</div>
+
+<h2>
+Turn identity into mechanics.
+</h2>
+
+<p class="lead">
+The system distinguishes internal state from external strategy.
+Belief can influence behavior, but behavior is what produces evidence.
+</p>
+
+</div>
+
+
+<div class="grid two">
+
+<div class="card">
+
+<h3>
+Leading indicators
+</h3>
+
+<p class="muted">
+Behaviors you control.
+</p>
+
+<textarea
+id="leadingInput"
+style="margin-top:14px;"
+placeholder="Hours built, outreach sent, experiments run, workouts completed..."
+></textarea>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Lagging indicators
+</h3>
+
+<p class="muted">
+Results reality gives you.
+</p>
+
+<textarea
+id="laggingInput"
+style="margin-top:14px;"
+placeholder="Revenue, users, performance, relationships, completed projects..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="card" style="margin-top:16px;">
+
+<h3>
+Strategy
+</h3>
+
+<textarea
+id="strategyInput"
+placeholder="What mechanism do you believe will move the objective?"
+></textarea>
+
+
+<div class="button-row">
+
+<button
+class="button primary"
+onclick="saveState()"
+>
+Save Strategy
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LEVERAGE -->
 
 <section>
 
@@ -1300,15 +1311,16 @@ Ask, "Who would naturally produce this outcome?"
 <div class="section-header">
 
 <div class="section-number">
-04 — ASSUMPTION AUDIT
+05 — LEVERAGE ENGINE
 </div>
 
 <h2>
-Separate belief from reality.
+Rank the possible moves.
 </h2>
 
 <p class="lead">
-A powerful system should allow metaphysical beliefs while still distinguishing them from observable evidence.
+Don't merely ask what you can do. Ask which action creates the largest
+downstream effect relative to its cost.
 </p>
 
 </div>
@@ -1320,11 +1332,11 @@ A powerful system should allow metaphysical beliefs while still distinguishing t
 
 <div class="field">
 
-<label>Assumption</label>
+<label>Action</label>
 
 <input
-id="assumptionInput"
-placeholder="What am I currently assuming?"
+id="actionInput"
+placeholder="What could you do?"
 >
 
 </div>
@@ -1332,29 +1344,69 @@ placeholder="What am I currently assuming?"
 
 <div class="field">
 
-<label>Classification</label>
+<label>Impact — 0 to 10</label>
 
-<select id="assumptionType">
-
-<option value="FACT">FACT</option>
-<option value="INFERENCE">INFERENCE</option>
-<option value="HYPOTHESIS">HYPOTHESIS</option>
-
-</select>
-
-</div>
-
-<div class="field full">
-
-<label>Test / evidence</label>
-
-<textarea
-id="assumptionTest"
-placeholder="What observation would support or challenge this?"
-></textarea>
+<input
+id="actionImpact"
+type="number"
+min="0"
+max="10"
+value="8"
+>
 
 </div>
 
+
+<div class="field">
+
+<label>Probability — 0 to 10</label>
+
+<input
+id="actionProbability"
+type="number"
+min="0"
+max="10"
+value="7"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>Leverage — 0 to 10</label>
+
+<input
+id="actionLeverage"
+type="number"
+min="0"
+max="10"
+value="8"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>Effort — 1 to 10</label>
+
+<input
+id="actionEffort"
+type="number"
+min="1"
+max="10"
+value="3"
+>
+
+</div>
+
+</div>
+
+
+<div class="formula">
+Leverage Score =
+Impact × Probability × Leverage ÷ Effort
 </div>
 
 
@@ -1362,17 +1414,17 @@ placeholder="What observation would support or challenge this?"
 
 <button
 class="button primary"
-onclick="addAssumption()"
+onclick="addAction()"
 >
-Add Assumption
+Add Candidate Action
 </button>
 
 </div>
 
 
 <div
+id="actionList"
 class="list"
-id="assumptionList"
 style="margin-top:20px;"
 ></div>
 
@@ -1383,20 +1435,20 @@ style="margin-top:20px;"
 </section>
 
 
-<!-- DAILY -->
+<!-- EXECUTION -->
 
-<section id="daily">
+<section id="execution">
 
 <div class="container">
 
 <div class="section-header">
 
 <div class="section-number">
-05 — DAILY EXECUTION
+06 — EXECUTION ENGINE
 </div>
 
 <h2>
-Today's operating system.
+Execute the highest-value move.
 </h2>
 
 </div>
@@ -1419,11 +1471,11 @@ Who am I choosing to be today?
 <div class="protocol-row">
 
 <div class="protocol-time">
-02 — VISION
+02 — TARGET
 </div>
 
 <div>
-What does the completed reality look like?
+What measurable outcome am I moving?
 </div>
 
 </div>
@@ -1431,11 +1483,11 @@ What does the completed reality look like?
 <div class="protocol-row">
 
 <div class="protocol-time">
-03 — STATE
+03 — BOTTLENECK
 </div>
 
 <div>
-What emotional/psychological state supports execution?
+What currently prevents progress?
 </div>
 
 </div>
@@ -1443,11 +1495,11 @@ What emotional/psychological state supports execution?
 <div class="protocol-row">
 
 <div class="protocol-time">
-04 — ATTENTION
+04 — LEVERAGE
 </div>
 
 <div>
-What opportunities, problems and signals should I notice?
+Which action has the highest expected downstream effect?
 </div>
 
 </div>
@@ -1455,11 +1507,11 @@ What opportunities, problems and signals should I notice?
 <div class="protocol-row">
 
 <div class="protocol-time">
-05 — ACTION
+05 — EXECUTE
 </div>
 
 <div>
-What is the smallest action with the largest downstream effect?
+Take the action before seeking more certainty.
 </div>
 
 </div>
@@ -1467,11 +1519,11 @@ What is the smallest action with the largest downstream effect?
 <div class="protocol-row">
 
 <div class="protocol-time">
-06 — EVIDENCE
+06 — MEASURE
 </div>
 
 <div>
-What proof can I create today?
+Record what actually happened.
 </div>
 
 </div>
@@ -1483,11 +1535,11 @@ What proof can I create today?
 
 <div class="field">
 
-<label>Highest-leverage action</label>
+<label>Today's highest-leverage action</label>
 
 <input
 id="dailyActionInput"
-placeholder="One action that meaningfully changes the trajectory."
+placeholder="One action that materially changes the trajectory."
 >
 
 </div>
@@ -1499,7 +1551,7 @@ placeholder="One action that meaningfully changes the trajectory."
 
 <input
 id="ifThenInput"
-placeholder="If I encounter X, then I will do Y."
+placeholder="If X happens, then I immediately do Y."
 >
 
 </div>
@@ -1509,7 +1561,7 @@ placeholder="If I encounter X, then I will do Y."
 
 <button
 class="button primary"
-onclick="saveDaily()"
+onclick="saveState()"
 >
 Save Daily Plan
 </button>
@@ -1539,7 +1591,7 @@ Mark Complete
 <div class="section-header">
 
 <div class="section-number">
-06 — EVIDENCE ENGINE
+07 — EVIDENCE ENGINE
 </div>
 
 <h2>
@@ -1547,7 +1599,7 @@ Create proof.
 </h2>
 
 <p class="lead">
-Track what actually happened. Evidence strengthens useful identities and reveals ineffective strategies.
+Track observable events. Evidence is feedback—not validation of your worth.
 </p>
 
 </div>
@@ -1563,10 +1615,11 @@ Track what actually happened. Evidence strengthens useful identities and reveals
 
 <input
 id="evidenceInput"
-placeholder="What happened today that demonstrates progress?"
+placeholder="What happened?"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1583,6 +1636,7 @@ placeholder="What happened today that demonstrates progress?"
 </select>
 
 </div>
+
 
 <div class="field">
 
@@ -1616,8 +1670,8 @@ Record Evidence
 
 
 <div
-class="list"
 id="evidenceList"
+class="list"
 style="margin-top:20px;"
 ></div>
 
@@ -1628,7 +1682,7 @@ style="margin-top:20px;"
 </section>
 
 
-<!-- OUTCOME -->
+<!-- REALITY -->
 
 <section>
 
@@ -1637,11 +1691,11 @@ style="margin-top:20px;"
 <div class="section-header">
 
 <div class="section-number">
-07 — REALITY CHECK
+08 — REALITY CHECK
 </div>
 
 <h2>
-What actually happened?
+Compare expectation with observation.
 </h2>
 
 </div>
@@ -1653,18 +1707,19 @@ What actually happened?
 
 <div class="field">
 
-<label>Expected outcome</label>
+<label>Expected</label>
 
 <textarea
 id="expectedInput"
-placeholder="What did you expect?"
+placeholder="What did I predict?"
 ></textarea>
 
 </div>
 
+
 <div class="field">
 
-<label>Observed outcome</label>
+<label>Observed</label>
 
 <textarea
 id="observedInput"
@@ -1673,16 +1728,18 @@ placeholder="What actually happened?"
 
 </div>
 
+
 <div class="field">
 
 <label>Gap</label>
 
 <textarea
 id="gapInput"
-placeholder="Where did expectation differ from reality?"
+placeholder="Where did prediction differ from reality?"
 ></textarea>
 
 </div>
+
 
 <div class="field">
 
@@ -1690,7 +1747,7 @@ placeholder="Where did expectation differ from reality?"
 
 <textarea
 id="lessonInput"
-placeholder="What does reality teach you?"
+placeholder="What information did reality provide?"
 ></textarea>
 
 </div>
@@ -1716,24 +1773,216 @@ Save Reality Check
 </section>
 
 
-<!-- M SCORE -->
+<!-- ASSUMPTIONS -->
 
-<section id="score">
+<section>
 
 <div class="container">
 
 <div class="section-header">
 
 <div class="section-number">
-08 — M-SCORE
+09 — ASSUMPTION AUDIT
 </div>
 
 <h2>
-Diagnose the system.
+Separate belief from evidence.
 </h2>
 
 <p class="lead">
-The score is a diagnostic instrument—not a measure of your worth.
+This keeps the system intellectually honest while leaving room for
+philosophical and spiritual interpretations.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>Assumption</label>
+
+<input
+id="assumptionInput"
+placeholder="What am I assuming?"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>Classification</label>
+
+<select id="assumptionType">
+
+<option value="FACT">FACT</option>
+<option value="INFERENCE">INFERENCE</option>
+<option value="HYPOTHESIS">HYPOTHESIS</option>
+
+</select>
+
+</div>
+
+
+<div class="field full">
+
+<label>Test / Evidence</label>
+
+<textarea
+id="assumptionTest"
+placeholder="What observation would support or challenge this?"
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="button-row">
+
+<button
+class="button primary"
+onclick="addAssumption()"
+>
+Add Assumption
+</button>
+
+</div>
+
+
+<div
+id="assumptionList"
+class="list"
+style="margin-top:20px;"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EXPERIMENTS -->
+
+<section id="experiments">
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="section-number">
+10 — EXPERIMENT ENGINE
+</div>
+
+<h2>
+Convert assumptions into experiments.
+</h2>
+
+</div>
+
+
+<div class="card">
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>Hypothesis</label>
+
+<textarea
+id="experimentHypothesis"
+placeholder="I believe X will happen if I do Y."
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>Action</label>
+
+<textarea
+id="experimentAction"
+placeholder="What will I actually do?"
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>Prediction</label>
+
+<textarea
+id="experimentPrediction"
+placeholder="What do I expect to observe?"
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>Result</label>
+
+<textarea
+id="experimentResult"
+placeholder="What happened?"
+></textarea>
+
+</div>
+
+</div>
+
+
+<div class="button-row">
+
+<button
+class="button primary"
+onclick="addExperiment()"
+>
+Record Experiment
+</button>
+
+</div>
+
+
+<div
+id="experimentList"
+class="list"
+style="margin-top:20px;"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- M SCORE -->
+
+<section>
+
+<div class="container">
+
+<div class="section-header">
+
+<div class="section-number">
+11 — SYSTEM HEALTH
+</div>
+
+<h2>
+Diagnose the machine.
+</h2>
+
+<p class="lead">
+M-Score is a diagnostic instrument, not a measurement of personal worth.
 </p>
 
 </div>
@@ -1792,12 +2041,10 @@ M-SCORE / 100
 </div>
 
 <div class="progress">
-
 <div
 class="progress-bar"
 id="scoreBar"
 ></div>
-
 </div>
 
 <p
@@ -1817,106 +2064,7 @@ Calculating...
 </section>
 
 
-<!-- EXPERIMENTS -->
-
-<section id="experiments">
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-09 — EXPERIMENT ENGINE
-</div>
-
-<h2>
-Turn manifestation into experimentation.
-</h2>
-
-<p class="lead">
-Instead of waiting for reality to validate you, deliberately create tests that generate information.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Hypothesis</label>
-
-<textarea
-id="experimentHypothesis"
-placeholder="I believe X will happen if I do Y."
-></textarea>
-
-</div>
-
-<div class="field">
-
-<label>Action</label>
-
-<textarea
-id="experimentAction"
-placeholder="What will you actually do?"
-></textarea>
-
-</div>
-
-<div class="field">
-
-<label>Prediction</label>
-
-<textarea
-id="experimentPrediction"
-placeholder="What do you expect to observe?"
-></textarea>
-
-</div>
-
-<div class="field">
-
-<label>Result</label>
-
-<textarea
-id="experimentResult"
-placeholder="What happened?"
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="addExperiment()"
->
-Run / Record Experiment
-</button>
-
-</div>
-
-
-<div
-class="list"
-id="experimentList"
-style="margin-top:20px;"
-></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- JOURNAL -->
+<!-- INNER STATE -->
 
 <section>
 
@@ -1925,7 +2073,7 @@ style="margin-top:20px;"
 <div class="section-header">
 
 <div class="section-number">
-10 — INNER STATE
+12 — INNER STATE
 </div>
 
 <h2>
@@ -1950,16 +2098,18 @@ placeholder="How will I embody the identity today?"
 
 </div>
 
+
 <div class="field">
 
 <label>End-state scene</label>
 
 <textarea
 id="sceneInput"
-placeholder="Describe a short scene that implies completion."
+placeholder="Describe a short scene implying completion."
 ></textarea>
 
 </div>
+
 
 <div class="field">
 
@@ -1967,10 +2117,11 @@ placeholder="Describe a short scene that implies completion."
 
 <textarea
 id="eveningInput"
-placeholder="What did I do today?"
+placeholder="What did I actually do?"
 ></textarea>
 
 </div>
+
 
 <div class="field">
 
@@ -2017,7 +2168,7 @@ class="quote hidden"
 </section>
 
 
-<!-- WEEKLY REVIEW -->
+<!-- REVIEW -->
 
 <section id="review">
 
@@ -2026,16 +2177,15 @@ class="quote hidden"
 <div class="section-header">
 
 <div class="section-number">
-11 — RECURSIVE REVIEW
+13 — RECURSIVE REVIEW
 </div>
 
 <h2>
-Improve the system.
+Improve the strategy.
 </h2>
 
 <p class="lead">
-The purpose of review is not self-judgment.
-It is information extraction.
+Don't protect the strategy from reality. Let reality improve the strategy.
 </p>
 
 </div>
@@ -2045,32 +2195,44 @@ It is information extraction.
 
 <div class="card">
 <h3>What did I intend?</h3>
-<p class="muted">Compare the original target with actual behavior.</p>
+<p class="muted">
+What was the original target?
+</p>
 </div>
 
 <div class="card">
 <h3>What did I do?</h3>
-<p class="muted">Measure behavior, not motivation.</p>
+<p class="muted">
+What behavior actually occurred?
+</p>
 </div>
 
 <div class="card">
 <h3>What happened?</h3>
-<p class="muted">Record observable outcomes.</p>
+<p class="muted">
+What did reality return?
+</p>
 </div>
 
 <div class="card">
 <h3>What worked?</h3>
-<p class="muted">Preserve mechanisms that produced useful results.</p>
+<p class="muted">
+Which mechanisms deserve more resources?
+</p>
 </div>
 
 <div class="card">
 <h3>What failed?</h3>
-<p class="muted">Discard ineffective tactics without attacking identity.</p>
+<p class="muted">
+Which assumptions or strategies should be discarded?
+</p>
 </div>
 
 <div class="card">
 <h3>What changes?</h3>
-<p class="muted">Design the next experiment.</p>
+<p class="muted">
+What is the next experiment?
+</p>
 </div>
 
 </div>
@@ -2084,7 +2246,7 @@ It is information extraction.
 
 <textarea
 id="weeklyReviewInput"
-style="min-height:190px;"
+style="min-height:200px;"
 placeholder="What did reality teach me this week?"
 ></textarea>
 
@@ -2100,20 +2262,20 @@ onclick="saveState()"
 Save Review
 </button>
 
-</div>
+<button
+class="button purple"
+onclick="generateNextExperiment()"
+>
+Generate Next Experiment
+</button>
 
 </div>
 
 
-<div class="quote">
-
-INTENTION
-→ ACTION
-→ OUTCOME
-→ INFORMATION
-→ REVISION
-→ BETTER ACTION
-→ COMPOUNDING
+<div
+id="nextExperimentOutput"
+class="quote hidden"
+></div>
 
 </div>
 
@@ -2131,7 +2293,7 @@ INTENTION
 <div class="section-header">
 
 <div class="section-number">
-12 — MASTER LOOP
+14 — MASTER LOOP
 </div>
 
 <h2>
@@ -2152,70 +2314,70 @@ Choose a meaningful direction.
 
 <div class="loop-step">
 <strong>2. DEFINE</strong><br>
-Specify the desired reality and success metric.
+Specify the desired outcome and metric.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
 <strong>3. IDENTITY</strong><br>
-Define the person capable of producing it.
+Define who can naturally produce it.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
-<strong>4. STATE</strong><br>
-Practice the psychological state that supports execution.
+<strong>4. STRATEGY</strong><br>
+Choose the mechanism most likely to work.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
-<strong>5. ATTENTION</strong><br>
-Search for opportunities, problems and signals.
+<strong>5. LEVERAGE</strong><br>
+Rank actions by expected downstream effect.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
-<strong>6. ACTION</strong><br>
-Take the highest-leverage available action.
+<strong>6. EXECUTE</strong><br>
+Take the highest-value action.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
 <strong>7. EVIDENCE</strong><br>
-Record observable progress.
+Record observable reality.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
-<strong>8. OUTCOME</strong><br>
-Compare expectation with reality.
+<strong>8. DIAGNOSE</strong><br>
+Find the bottleneck.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
-<strong>9. LEARN</strong><br>
-Extract the useful information.
+<strong>9. EXPERIMENT</strong><br>
+Test the next hypothesis.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
 <strong>10. ADAPT</strong><br>
-Change strategy without abandoning the mission.
+Change the strategy based on information.
 </div>
 
 <div class="arrow">↓</div>
 
 <div class="loop-step">
 <strong>11. COMPOUND</strong><br>
-Repeat until the trajectory changes.
+Repeat with increasing leverage.
 </div>
 
 </div>
@@ -2223,9 +2385,9 @@ Repeat until the trajectory changes.
 
 <div class="quote">
 
-The goal is not to become better at wishing.
-The goal is to build an increasingly powerful loop between
-<strong>identity, attention, action, evidence and adaptation.</strong>
+The objective is not to become better at wishing.
+The objective is to build an increasingly powerful feedback loop
+between <strong>identity, attention, action, evidence and adaptation.</strong>
 
 </div>
 
@@ -2234,7 +2396,7 @@ The goal is to build an increasingly powerful loop between
 </section>
 
 
-<!-- DATA -->
+<!-- CONTROLS -->
 
 <section>
 
@@ -2247,10 +2409,8 @@ System Controls
 </h3>
 
 <p class="muted">
-All data is stored locally in your browser.
-Export backups regularly.
+Your data is stored locally in this browser. Export backups regularly.
 </p>
-
 
 <div class="button-row">
 
@@ -2291,7 +2451,6 @@ Reset Everything
 
 </section>
 
-
 </main>
 
 
@@ -2304,7 +2463,7 @@ Manifestation OS
 </div>
 
 <h2>
-Identity → Reality
+INTENTION → REALITY
 </h2>
 
 <p class="muted">
@@ -2317,29 +2476,27 @@ Measure honestly. Adapt relentlessly.
 </footer>
 
 
-<div
-id="toast"
-class="toast"
->
+<div id="toast" class="toast">
 Saved.
 </div>
 
 
 <script>
 
-/* =====================================================
-   MANIFESTATION OS — CORE ENGINE
-===================================================== */
+/* =========================================================
+   MANIFESTATION OS
+   ADAPTIVE REALITY ENGINE
+========================================================= */
 
-const KEY="manifestation_os_max_v1";
-
+const KEY="manifestation_os_v2";
 
 let state={
-
   goal:"",
   why:"",
   endState:"",
   successMetric:"",
+  currentValue:0,
+  targetValue:100,
   deadline:"",
 
   identity:"",
@@ -2347,17 +2504,22 @@ let state={
   assumptions:"",
   desiredState:"",
 
+  leading:"",
+  lagging:"",
+  strategy:"",
+
   dailyAction:"",
   ifThen:"",
-
-  assumptionsLog:[],
-  evidence:[],
-  experiments:[],
 
   expected:"",
   observed:"",
   gap:"",
   lesson:"",
+
+  assumptionsLog:[],
+  evidence:[],
+  experiments:[],
+  actions:[],
 
   journal:{
     morning:"",
@@ -2367,24 +2529,44 @@ let state={
     weekly:""
   },
 
-  scores:[
-    8,8,7,8,8,7,8
-  ],
+  scores:[8,8,7,8,8,7,8],
 
   actionsCompleted:0,
-
   streak:0,
+  lastActionDate:null,
 
-  lastActionDate:null
+  recommendation:null
 };
 
 
-/* -----------------------------------------------------
+/* =========================================================
    HELPERS
------------------------------------------------------ */
+========================================================= */
 
 function $(id){
   return document.getElementById(id);
+}
+
+
+function today(){
+  return new Date()
+    .toISOString()
+    .slice(0,10);
+}
+
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+
+function clamp(value,min,max){
+  return Math.max(min,Math.min(max,value));
 }
 
 
@@ -2403,30 +2585,9 @@ function toast(message){
 }
 
 
-function today(){
-
-  return new Date()
-    .toISOString()
-    .slice(0,10);
-
-}
-
-
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-/* -----------------------------------------------------
+/* =========================================================
    COLLECT
------------------------------------------------------ */
+========================================================= */
 
 function collect(){
 
@@ -2434,12 +2595,23 @@ function collect(){
   state.why=$("whyInput").value;
   state.endState=$("endStateInput").value;
   state.successMetric=$("successMetricInput").value;
+
+  state.currentValue=
+    Number($("currentValueInput").value)||0;
+
+  state.targetValue=
+    Number($("targetValueInput").value)||0;
+
   state.deadline=$("deadlineInput").value;
 
   state.identity=$("identityInput").value;
   state.standards=$("standardsInput").value;
   state.assumptions=$("assumptionsInput").value;
   state.desiredState=$("stateInput").value;
+
+  state.leading=$("leadingInput").value;
+  state.lagging=$("laggingInput").value;
+  state.strategy=$("strategyInput").value;
 
   state.dailyAction=$("dailyActionInput").value;
   state.ifThen=$("ifThenInput").value;
@@ -2455,25 +2627,16 @@ function collect(){
   state.journal.revision=$("revisionInput").value;
   state.journal.weekly=$("weeklyReviewInput").value;
 
-
   state.scores=
     [...document.querySelectorAll(".scoreInput")]
-      .map(x=>
-        Math.max(
-          0,
-          Math.min(
-            10,
-            Number(x.value)||0
-          )
-        )
-      );
+      .map(x=>clamp(Number(x.value)||0,0,10));
 
 }
 
 
-/* -----------------------------------------------------
-   SAVE
------------------------------------------------------ */
+/* =========================================================
+   STORAGE
+========================================================= */
 
 function saveState(){
 
@@ -2490,10 +2653,6 @@ function saveState(){
 
 }
 
-
-/* -----------------------------------------------------
-   LOAD
------------------------------------------------------ */
 
 function load(){
 
@@ -2520,7 +2679,10 @@ function load(){
 
     }catch(error){
 
-      console.error(error);
+      console.error(
+        "Could not load saved state:",
+        error
+      );
 
     }
 
@@ -2533,69 +2695,195 @@ function load(){
 }
 
 
+/* =========================================================
+   POPULATE
+========================================================= */
+
 function populate(){
 
   $("goalInput").value=state.goal||"";
   $("whyInput").value=state.why||"";
   $("endStateInput").value=state.endState||"";
   $("successMetricInput").value=state.successMetric||"";
-  $("deadlineInput").value=state.deadline||"";
 
-  $("identityInput").value=state.identity||"";
-  $("standardsInput").value=state.standards||"";
-  $("assumptionsInput").value=state.assumptions||"";
-  $("stateInput").value=state.desiredState||"";
+  $("currentValueInput").value=
+    state.currentValue??0;
 
-  $("dailyActionInput").value=state.dailyAction||"";
-  $("ifThenInput").value=state.ifThen||"";
+  $("targetValueInput").value=
+    state.targetValue??100;
 
-  $("expectedInput").value=state.expected||"";
-  $("observedInput").value=state.observed||"";
-  $("gapInput").value=state.gap||"";
-  $("lessonInput").value=state.lesson||"";
+  $("deadlineInput").value=
+    state.deadline||"";
 
-  $("morningInput").value=state.journal.morning||"";
-  $("sceneInput").value=state.journal.scene||"";
-  $("eveningInput").value=state.journal.evening||"";
-  $("revisionInput").value=state.journal.revision||"";
-  $("weeklyReviewInput").value=state.journal.weekly||"";
+  $("identityInput").value=
+    state.identity||"";
 
+  $("standardsInput").value=
+    state.standards||"";
+
+  $("assumptionsInput").value=
+    state.assumptions||"";
+
+  $("stateInput").value=
+    state.desiredState||"";
+
+  $("leadingInput").value=
+    state.leading||"";
+
+  $("laggingInput").value=
+    state.lagging||"";
+
+  $("strategyInput").value=
+    state.strategy||"";
+
+  $("dailyActionInput").value=
+    state.dailyAction||"";
+
+  $("ifThenInput").value=
+    state.ifThen||"";
+
+  $("expectedInput").value=
+    state.expected||"";
+
+  $("observedInput").value=
+    state.observed||"";
+
+  $("gapInput").value=
+    state.gap||"";
+
+  $("lessonInput").value=
+    state.lesson||"";
+
+  $("morningInput").value=
+    state.journal.morning||"";
+
+  $("sceneInput").value=
+    state.journal.scene||"";
+
+  $("eveningInput").value=
+    state.journal.evening||"";
+
+  $("revisionInput").value=
+    state.journal.revision||"";
+
+  $("weeklyReviewInput").value=
+    state.journal.weekly||"";
 
   document
     .querySelectorAll(".scoreInput")
     .forEach((input,index)=>{
-
       input.value=
         state.scores[index]??0;
-
     });
 
 }
 
 
-/* -----------------------------------------------------
-   SCORE
------------------------------------------------------ */
+/* =========================================================
+   GOAL PROGRESS
+========================================================= */
+
+function calculateProgress(){
+
+  const current=
+    Number($("currentValueInput").value)||0;
+
+  const target=
+    Number($("targetValueInput").value)||0;
+
+  let progress=0;
+
+  if(target!==0){
+
+    progress=
+      clamp(
+        (current/target)*100,
+        0,
+        100
+      );
+
+  }
+
+
+  $("goalProgressBar").style.width=
+    progress+"%";
+
+  $("metricProgress").textContent=
+    Math.round(progress)+"%";
+
+
+  const deadline=
+    $("deadlineInput").value;
+
+
+  let trajectory="";
+
+
+  if(!deadline){
+
+    trajectory=
+      "No deadline defined.";
+
+  }else{
+
+    const days=
+      Math.ceil(
+        (
+          new Date(deadline)-
+          new Date()
+        )/
+        86400000
+      );
+
+
+    if(days<0){
+
+      trajectory=
+        "Deadline passed — revise the plan.";
+
+    }else if(progress>=80){
+
+      trajectory=
+        `${days} days remaining — trajectory is strong.`;
+
+    }else if(progress>=50){
+
+      trajectory=
+        `${days} days remaining — maintain execution.`;
+
+    }else{
+
+      trajectory=
+        `${days} days remaining — increase leverage or revise strategy.`;
+
+    }
+
+  }
+
+
+  $("trajectoryText").textContent=
+    trajectory;
+
+
+  return progress;
+
+}
+
+
+/* =========================================================
+   M-SCORE
+========================================================= */
 
 function calculateScore(){
 
   const values=
     [...document.querySelectorAll(".scoreInput")]
-      .map(x=>
-        Math.max(
-          0,
-          Math.min(
-            10,
-            Number(x.value)||0
-          )
-        )
-      );
+      .map(x=>clamp(Number(x.value)||0,0,10));
+
 
   const total=
-    values.reduce(
-      (a,b)=>a+b,
-      0
-    );
+    values.reduce((a,b)=>a+b,0);
+
 
   const score=
     Math.round(
@@ -2603,11 +2891,11 @@ function calculateScore(){
     );
 
 
-  $("scoreNumber").textContent=score;
+  $("scoreNumber").textContent=
+    score;
 
   $("scoreBar").style.width=
     score+"%";
-
 
   $("metricScore").textContent=
     score;
@@ -2615,20 +2903,32 @@ function calculateScore(){
 
   let advice="";
 
-  if(score<40)
-    advice="Rebuild clarity and reduce complexity.";
 
-  else if(score<60)
-    advice="Choose one bottleneck and improve it.";
+  if(score<40){
 
-  else if(score<80)
-    advice="System is functioning. Increase consistency.";
+    advice=
+      "System unstable. Rebuild clarity and simplify.";
 
-  else
-    advice="System is strong. Focus on leverage and compounding.";
+  }else if(score<60){
+
+    advice=
+      "System functional but inconsistent. Attack one bottleneck.";
+
+  }else if(score<80){
+
+    advice=
+      "Good operating condition. Increase consistency and leverage.";
+
+  }else{
+
+    advice=
+      "Strong system. Focus on compounding and asymmetric opportunities.";
+
+  }
 
 
-  $("scoreAdvice").textContent=advice;
+  $("scoreAdvice").textContent=
+    advice;
 
 
   return score;
@@ -2636,9 +2936,9 @@ function calculateScore(){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    BOTTLENECK
------------------------------------------------------ */
+========================================================= */
 
 function calculateBottleneck(){
 
@@ -2652,12 +2952,14 @@ function calculateBottleneck(){
     "Persistence"
   ];
 
+
   const values=
     [...document.querySelectorAll(".scoreInput")]
       .map(x=>Number(x.value)||0);
 
 
   let lowest=0;
+
 
   values.forEach((value,index)=>{
 
@@ -2670,15 +2972,331 @@ function calculateBottleneck(){
   $("bottleneck").textContent=
     names[lowest];
 
+
+  const advice={
+    Identity:"Clarify the person and standards required.",
+    Clarity:"Reduce the objective to one measurable target.",
+    State:"Create conditions that support consistent execution.",
+    Attention:"Remove distractions and improve signal detection.",
+    Action:"Increase execution frequency.",
+    Evidence:"Measure results more rigorously.",
+    Persistence:"Build systems that make consistency easier."
+  };
+
+
   $("bottleneckText").textContent=
-    `Current score: ${values[lowest]}/10. Improving this component has the highest immediate leverage.`;
+    `${values[lowest]}/10 — ${advice[names[lowest]]}`;
 
 }
 
 
-/* -----------------------------------------------------
-   ACTION
------------------------------------------------------ */
+/* =========================================================
+   LEVERAGE ENGINE
+========================================================= */
+
+function calculateLeverage(
+  impact,
+  probability,
+  leverage,
+  effort
+){
+
+  effort=
+    Math.max(1,effort);
+
+  return (
+    impact*
+    probability*
+    leverage
+  )/effort;
+
+}
+
+
+function addAction(){
+
+  const name=
+    $("actionInput")
+      .value
+      .trim();
+
+
+  if(!name){
+
+    toast("Enter an action.");
+
+    return;
+
+  }
+
+
+  const impact=
+    clamp(
+      Number($("actionImpact").value)||0,
+      0,
+      10
+    );
+
+  const probability=
+    clamp(
+      Number($("actionProbability").value)||0,
+      0,
+      10
+    );
+
+  const leverage=
+    clamp(
+      Number($("actionLeverage").value)||0,
+      0,
+      10
+    );
+
+  const effort=
+    clamp(
+      Number($("actionEffort").value)||1,
+      1,
+      10
+    );
+
+
+  const score=
+    calculateLeverage(
+      impact,
+      probability,
+      leverage,
+      effort
+    );
+
+
+  state.actions.push({
+
+    id:Date.now(),
+
+    name,
+
+    impact,
+
+    probability,
+
+    leverage,
+
+    effort,
+
+    score
+
+  });
+
+
+  $("actionInput").value="";
+
+
+  saveRaw();
+
+  renderActions();
+
+  generateRecommendation();
+
+  toast("Candidate action added.");
+
+}
+
+
+function removeAction(id){
+
+  state.actions=
+    state.actions.filter(
+      x=>x.id!==id
+    );
+
+  saveRaw();
+
+  renderActions();
+
+  generateRecommendation();
+
+}
+
+
+function renderActions(){
+
+  const list=
+    $("actionList");
+
+  list.innerHTML="";
+
+
+  const actions=
+    state.actions
+      .slice()
+      .sort(
+        (a,b)=>b.score-a.score
+      );
+
+
+  if(!actions.length){
+
+    list.innerHTML=
+      `<p class="muted">
+        Add candidate actions to calculate leverage.
+      </p>`;
+
+    return;
+
+  }
+
+
+  actions.forEach((action,index)=>{
+
+    const level=
+      action.score>=150
+        ?"high"
+        :action.score>=70
+          ?"medium"
+          :"low";
+
+
+    const el=
+      document.createElement("div");
+
+    el.className="list-item";
+
+
+    el.innerHTML=`
+
+      <div>
+
+        <span class="badge ${level}">
+          #${index+1}
+        </span>
+
+        <strong>
+          ${escapeHTML(action.name)}
+        </strong>
+
+        <div
+          class="muted"
+          style="margin-top:6px;"
+        >
+          Impact ${action.impact}
+          · Probability ${action.probability}
+          · Leverage ${action.leverage}
+          · Effort ${action.effort}
+        </div>
+
+      </div>
+
+      <div style="text-align:right;">
+
+        <div class="leverage-score"
+             style="font-size:1.6rem;">
+          ${Math.round(action.score)}
+        </div>
+
+        <button
+          onclick="removeAction(${action.id})"
+        >
+          ×
+        </button>
+
+      </div>
+
+    `;
+
+    list.appendChild(el);
+
+  });
+
+}
+
+
+/* =========================================================
+   RECOMMENDATION ENGINE
+========================================================= */
+
+function generateRecommendation(){
+
+  let recommendation=null;
+
+
+  if(state.actions.length){
+
+    recommendation=
+      state.actions
+        .slice()
+        .sort(
+          (a,b)=>b.score-a.score
+        )[0];
+
+  }else{
+
+    const action=
+      state.dailyAction ||
+      "Define one small action that directly advances your objective.";
+
+
+    recommendation={
+      name:action,
+      score:0
+    };
+
+  }
+
+
+  state.recommendation=
+    recommendation;
+
+
+  $("commandAction").textContent=
+    recommendation.name;
+
+
+  $("commandScore").textContent=
+    `Score: ${Math.round(recommendation.score||0)}`;
+
+
+  $("metricLeverage").textContent=
+    Math.round(recommendation.score||0);
+
+
+  return recommendation;
+
+}
+
+
+/* =========================================================
+   EXECUTE RECOMMENDATION
+========================================================= */
+
+function executeRecommendation(){
+
+  const recommendation=
+    state.recommendation ||
+    generateRecommendation();
+
+
+  $("dailyActionInput").value=
+    recommendation.name;
+
+
+  collect();
+
+  saveRaw();
+
+  document
+    .getElementById("execution")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+
+  toast("Recommendation moved to execution.");
+
+}
+
+
+/* =========================================================
+   COMPLETE ACTION
+========================================================= */
 
 function completeAction(){
 
@@ -2686,6 +3304,7 @@ function completeAction(){
     $("dailyActionInput")
       .value
       .trim();
+
 
   if(!action){
 
@@ -2696,21 +3315,24 @@ function completeAction(){
   }
 
 
-  const date=today();
+  const date=
+    today();
 
 
   if(state.lastActionDate!==date){
 
     state.actionsCompleted++;
 
-    if(
-      state.lastActionDate===
+
+    const previous=
       new Date(
         Date.now()-86400000
       )
       .toISOString()
-      .slice(0,10)
-    ){
+      .slice(0,10);
+
+
+    if(state.lastActionDate===previous){
 
       state.streak++;
 
@@ -2720,34 +3342,35 @@ function completeAction(){
 
     }
 
-    state.lastActionDate=date;
+
+    state.lastActionDate=
+      date;
 
   }
 
 
   collect();
 
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
+  saveRaw();
 
   update();
 
-  toast("Action recorded.");
+  toast("Execution recorded.");
 
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    EVIDENCE
------------------------------------------------------ */
+========================================================= */
 
 function addEvidence(){
 
-  const input=$("evidenceInput");
+  const text=
+    $("evidenceInput")
+      .value
+      .trim();
 
-  const text=input.value.trim();
 
   if(!text){
 
@@ -2764,25 +3387,24 @@ function addEvidence(){
 
     text,
 
-    category:$("evidenceCategory").value,
+    category:
+      $("evidenceCategory").value,
 
-    impact:Number(
-      $("evidenceImpact").value
-    ),
+    impact:
+      Number(
+        $("evidenceImpact").value
+      ),
 
-    date:new Date().toISOString()
+    date:
+      new Date().toISOString()
 
   });
 
 
-  input.value="";
+  $("evidenceInput").value="";
 
 
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
+  saveRaw();
 
   renderEvidence();
 
@@ -2797,15 +3419,10 @@ function removeEvidence(id){
 
   state.evidence=
     state.evidence.filter(
-      item=>item.id!==id
+      x=>x.id!==id
     );
 
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
+  saveRaw();
 
   renderEvidence();
 
@@ -2816,7 +3433,8 @@ function removeEvidence(id){
 
 function renderEvidence(){
 
-  const list=$("evidenceList");
+  const list=
+    $("evidenceList");
 
   list.innerHTML="";
 
@@ -2843,25 +3461,23 @@ function renderEvidence(){
 
       el.className="list-item";
 
+
       el.innerHTML=`
 
         <div>
 
-          <div>
+          <span class="badge hypothesis">
+            ${escapeHTML(item.category)}
+          </span>
 
-            <span class="badge hypothesis">
-              ${escapeHTML(item.category)}
-            </span>
+          <strong>
+            ${escapeHTML(item.text)}
+          </strong>
 
-            <strong>
-              ${escapeHTML(item.text)}
-            </strong>
-
-          </div>
-
-          <small class="muted">
+          <div class="muted"
+               style="margin-top:5px;">
             Impact ${item.impact}/5
-          </small>
+          </div>
 
         </div>
 
@@ -2873,6 +3489,7 @@ function renderEvidence(){
 
       `;
 
+
       list.appendChild(el);
 
     });
@@ -2880,9 +3497,9 @@ function renderEvidence(){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    ASSUMPTIONS
------------------------------------------------------ */
+========================================================= */
 
 function addAssumption(){
 
@@ -2890,6 +3507,7 @@ function addAssumption(){
     $("assumptionInput")
       .value
       .trim();
+
 
   if(!text){
 
@@ -2906,9 +3524,11 @@ function addAssumption(){
 
     text,
 
-    type:$("assumptionType").value,
+    type:
+      $("assumptionType").value,
 
-    test:$("assumptionTest").value
+    test:
+      $("assumptionTest").value
 
   });
 
@@ -2917,22 +3537,32 @@ function addAssumption(){
   $("assumptionTest").value="";
 
 
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
+  saveRaw();
 
   renderAssumptions();
 
-  toast("Assumption logged.");
+  toast("Assumption recorded.");
+
+}
+
+
+function removeAssumption(id){
+
+  state.assumptionsLog=
+    state.assumptionsLog
+      .filter(x=>x.id!==id);
+
+  saveRaw();
+
+  renderAssumptions();
 
 }
 
 
 function renderAssumptions(){
 
-  const list=$("assumptionList");
+  const list=
+    $("assumptionList");
 
   list.innerHTML="";
 
@@ -2946,6 +3576,7 @@ function renderAssumptions(){
         document.createElement("div");
 
       el.className="list-item";
+
 
       const typeClass=
         item.type.toLowerCase();
@@ -2963,10 +3594,8 @@ function renderAssumptions(){
             ${escapeHTML(item.text)}
           </strong>
 
-          <div
-            class="muted"
-            style="margin-top:5px;"
-          >
+          <div class="muted"
+               style="margin-top:6px;">
             Test: ${escapeHTML(item.test)}
           </div>
 
@@ -2980,6 +3609,7 @@ function renderAssumptions(){
 
       `;
 
+
       list.appendChild(el);
 
     });
@@ -2987,25 +3617,9 @@ function renderAssumptions(){
 }
 
 
-function removeAssumption(id){
-
-  state.assumptionsLog=
-    state.assumptionsLog
-      .filter(x=>x.id!==id);
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
-  renderAssumptions();
-
-}
-
-
-/* -----------------------------------------------------
+/* =========================================================
    EXPERIMENTS
------------------------------------------------------ */
+========================================================= */
 
 function addExperiment(){
 
@@ -3013,6 +3627,7 @@ function addExperiment(){
     $("experimentHypothesis")
       .value
       .trim();
+
 
   if(!hypothesis){
 
@@ -3029,13 +3644,17 @@ function addExperiment(){
 
     hypothesis,
 
-    action:$("experimentAction").value,
+    action:
+      $("experimentAction").value,
 
-    prediction:$("experimentPrediction").value,
+    prediction:
+      $("experimentPrediction").value,
 
-    result:$("experimentResult").value,
+    result:
+      $("experimentResult").value,
 
-    date:new Date().toISOString()
+    date:
+      new Date().toISOString()
 
   });
 
@@ -3046,11 +3665,7 @@ function addExperiment(){
   $("experimentResult").value="";
 
 
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
+  saveRaw();
 
   renderExperiments();
 
@@ -3063,7 +3678,8 @@ function addExperiment(){
 
 function renderExperiments(){
 
-  const list=$("experimentList");
+  const list=
+    $("experimentList");
 
   list.innerHTML="";
 
@@ -3092,25 +3708,31 @@ function renderExperiments(){
 
       el.style.display="block";
 
+
       el.innerHTML=`
 
         <strong>
           ${escapeHTML(item.hypothesis)}
         </strong>
 
-        <p class="muted" style="margin-top:7px;">
-          Action: ${escapeHTML(item.action)}
+        <p class="muted"
+           style="margin-top:7px;">
+          Action:
+          ${escapeHTML(item.action)}
         </p>
 
         <p class="muted">
-          Prediction: ${escapeHTML(item.prediction)}
+          Prediction:
+          ${escapeHTML(item.prediction)}
         </p>
 
         <p style="margin-top:7px;">
-          Result: ${escapeHTML(item.result)}
+          Result:
+          ${escapeHTML(item.result)}
         </p>
 
       `;
+
 
       list.appendChild(el);
 
@@ -3119,15 +3741,58 @@ function renderExperiments(){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
+   IDENTITY → BEHAVIOR
+========================================================= */
+
+function generateIdentityBehavior(){
+
+  const identity=
+    $("identityInput")
+      .value
+      .trim();
+
+
+  const output=
+    $("identityBehavior");
+
+
+  if(!identity){
+
+    output.textContent=
+      "Define the identity first.";
+
+    output.classList.remove("hidden");
+
+    return;
+
+  }
+
+
+  output.innerHTML=
+    `
+    If I truly operated as:
+    <strong>${escapeHTML(identity)}</strong>,
+    then today I would choose the behavior that most clearly
+    demonstrates that identity.
+    `;
+
+
+  output.classList.remove("hidden");
+
+}
+
+
+/* =========================================================
    AFFIRMATION
------------------------------------------------------ */
+========================================================= */
 
 function generateAffirmation(){
 
   const identity=
     state.identity ||
     $("identityInput").value;
+
 
   const goal=
     state.goal ||
@@ -3143,23 +3808,24 @@ function generateAffirmation(){
       `I AM ${identity.replace(
         /^i am\s*/i,
         ""
-      )}.`;
+      )}. I prove it through my actions.`;
 
   }else if(goal){
 
     text=
-      `I AM becoming the person who naturally creates ${goal}.`;
+      `I AM becoming the person capable of creating ${goal}.`;
 
   }else{
 
     text=
-      "I AM the conscious author of my attention, choices and actions.";
+      "I AM responsible for my attention, choices, actions and adaptation.";
 
   }
 
 
   const output=
     $("affirmationOutput");
+
 
   output.textContent=text;
 
@@ -3168,9 +3834,77 @@ function generateAffirmation(){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
+   NEXT EXPERIMENT
+========================================================= */
+
+function generateNextExperiment(){
+
+  const output=
+    $("nextExperimentOutput");
+
+
+  let lesson=
+    state.lesson ||
+    $("lessonInput").value;
+
+
+  let bottleneck=
+    $("bottleneck").textContent;
+
+
+  let action=
+    state.recommendation?.name ||
+    state.dailyAction;
+
+
+  if(!lesson){
+
+    lesson=
+      "The current strategy has not yet generated enough information.";
+
+  }
+
+
+  output.innerHTML=`
+
+    <strong>Next experiment:</strong><br><br>
+
+    Test whether improving
+    <strong>${escapeHTML(bottleneck)}</strong>
+    changes the outcome.<br><br>
+
+    Current candidate action:
+    <strong>${escapeHTML(action)}</strong><br><br>
+
+    Previous lesson:
+    ${escapeHTML(lesson)}
+
+  `;
+
+
+  output.classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   RAW SAVE
+========================================================= */
+
+function saveRaw(){
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(state)
+  );
+
+}
+
+
+/* =========================================================
    UPDATE
------------------------------------------------------ */
+========================================================= */
 
 function update(){
 
@@ -3178,47 +3912,40 @@ function update(){
 
   calculateBottleneck();
 
+  calculateProgress();
+
+  renderActions();
+
   renderEvidence();
 
   renderAssumptions();
 
   renderExperiments();
 
+  generateRecommendation();
+
 
   $("metricEvidence").textContent=
     state.evidence.length;
 
+
   $("metricActions").textContent=
     state.actionsCompleted;
+
 
   $("metricExperiments").textContent=
     state.experiments.length;
 
+
   $("metricStreak").textContent=
     state.streak;
-
-
-  const progress=
-    Math.min(
-      100,
-      state.evidence.length*10
-    );
-
-
-  $("metricProgress").textContent=
-    progress+"%";
-
-
-  $("commandAction").textContent=
-    state.dailyAction ||
-    "Define your highest-leverage action.";
 
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    EXPORT
------------------------------------------------------ */
+========================================================= */
 
 function exportData(){
 
@@ -3247,10 +3974,11 @@ function exportData(){
   const link=
     document.createElement("a");
 
+
   link.href=url;
 
   link.download=
-    "manifestation-os-backup.json";
+    "manifestation-os-v2-backup.json";
 
   link.click();
 
@@ -3262,14 +3990,15 @@ function exportData(){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    IMPORT
------------------------------------------------------ */
+========================================================= */
 
 function importData(event){
 
   const file=
     event.target.files[0];
+
 
   if(!file)
     return;
@@ -3284,7 +4013,9 @@ function importData(event){
     try{
 
       const imported=
-        JSON.parse(e.target.result);
+        JSON.parse(
+          e.target.result
+        );
 
 
       state={
@@ -3299,11 +4030,7 @@ function importData(event){
       };
 
 
-      localStorage.setItem(
-        KEY,
-        JSON.stringify(state)
-      );
-
+      saveRaw();
 
       populate();
 
@@ -3311,7 +4038,9 @@ function importData(event){
 
       toast("Backup imported.");
 
-    }catch{
+    }catch(error){
+
+      console.error(error);
 
       toast("Invalid backup.");
 
@@ -3325,9 +4054,9 @@ function importData(event){
 }
 
 
-/* -----------------------------------------------------
+/* =========================================================
    RESET
------------------------------------------------------ */
+========================================================= */
 
 function resetSystem(){
 
@@ -3346,9 +4075,9 @@ function resetSystem(){
 }
 
 
-/* -----------------------------------------------------
-   SCORE AUTO SAVE
------------------------------------------------------ */
+/* =========================================================
+   AUTO-SAVE SCORES
+========================================================= */
 
 document
   .querySelectorAll(".scoreInput")
@@ -3364,10 +4093,7 @@ document
 
         calculateBottleneck();
 
-        localStorage.setItem(
-          KEY,
-          JSON.stringify(state)
-        );
+        saveRaw();
 
       }
     );
@@ -3375,17 +4101,16 @@ document
   });
 
 
-/* -----------------------------------------------------
+/* =========================================================
    KEYBOARD
------------------------------------------------------ */
+========================================================= */
 
 document.addEventListener(
   "keydown",
   event=>{
 
     if(
-      (event.ctrlKey||
-       event.metaKey)&&
+      (event.ctrlKey||event.metaKey)&&
       event.key.toLowerCase()==="s"
     ){
 
@@ -3399,9 +4124,9 @@ document.addEventListener(
 );
 
 
-/* -----------------------------------------------------
+/* =========================================================
    INIT
------------------------------------------------------ */
+========================================================= */
 
 load();
 
