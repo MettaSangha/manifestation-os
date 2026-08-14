@@ -1,726 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07090d">
-
-<title>Manifestation OS — Adaptive Reality Engine</title>
-
-<meta name="description"
-content="Manifestation OS is an adaptive personal operating system that transforms intention into identity, strategy, action, evidence, experiments, feedback, and measurable progress.">
-
-<style>
-:root{
-  --bg:#07090d;
-  --surface:#0d1118;
-  --surface2:#121923;
-  --surface3:#192331;
-  --border:#273241;
-  --text:#f3f6fa;
-  --muted:#8793a5;
-  --green:#b8ff6a;
-  --blue:#78a8ff;
-  --yellow:#ffd166;
-  --red:#ff7182;
-  --purple:#c69cff;
-  --radius:18px;
-  --max:1280px;
-}
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:
-    radial-gradient(circle at 5% 0%,rgba(120,168,255,.10),transparent 30%),
-    radial-gradient(circle at 95% 5%,rgba(184,255,106,.08),transparent 30%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.55;
-}
-
-button,input,textarea,select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-input,textarea,select{
-  width:100%;
-  padding:13px 14px;
-  background:var(--surface);
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:11px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:var(--green);
-}
-
-textarea{
-  min-height:115px;
-  resize:vertical;
-}
-
-button{
-  border:0;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-.container{
-  width:min(92%,var(--max));
-  margin:auto;
-}
-
-.hidden{
-  display:none!important;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-.green{
-  color:var(--green);
-}
-
-.blue{
-  color:var(--blue);
-}
-
-.yellow{
-  color:var(--yellow);
-}
-
-.red{
-  color:var(--red);
-}
-
-.purple{
-  color:var(--purple);
-}
-
-/* NAV */
-
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  backdrop-filter:blur(18px);
-  background:rgba(7,9,13,.86);
-  border-bottom:1px solid var(--border);
-}
-
-.topbar-inner{
-  min-height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.brand{
-  font-weight:950;
-  letter-spacing:-.045em;
-  white-space:nowrap;
-}
-
-.brand span{
-  color:var(--green);
-}
-
-.nav{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-}
-
-.nav a{
-  white-space:nowrap;
-  color:var(--muted);
-  font-size:.76rem;
-  font-weight:850;
-}
-
-.nav a:hover{
-  color:var(--green);
-}
-
-/* HERO */
-
-.hero{
-  padding:90px 0 60px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-  gap:35px;
-  align-items:end;
-}
-
-.eyebrow{
-  color:var(--green);
-  font-size:.68rem;
-  font-weight:950;
-  letter-spacing:.19em;
-  text-transform:uppercase;
-  margin-bottom:13px;
-}
-
-.hero h1{
-  font-size:clamp(3.3rem,9vw,8rem);
-  line-height:.84;
-  letter-spacing:-.09em;
-}
-
-.hero p{
-  max-width:780px;
-  margin-top:27px;
-  color:var(--muted);
-  font-size:1.1rem;
-}
-
-.hero-loop{
-  padding:25px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  color:var(--green);
-  font-weight:900;
-  line-height:1.8;
-}
-
-/* SECTIONS */
-
-section{
-  padding:58px 0;
-}
-
-.section-header{
-  margin-bottom:27px;
-}
-
-.section-number{
-  color:var(--green);
-  font-size:.67rem;
-  font-weight:950;
-  letter-spacing:.18em;
-  margin-bottom:8px;
-}
-
-h2{
-  font-size:clamp(2rem,5vw,3.6rem);
-  line-height:.95;
-  letter-spacing:-.065em;
-}
-
-h3{
-  font-size:1.08rem;
-  margin-bottom:7px;
-}
-
-.lead{
-  max-width:820px;
-  margin-top:13px;
-  color:var(--muted);
-}
-
-/* CARDS */
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.grid.two{
-  grid-template-columns:repeat(2,1fr);
-}
-
-.card{
-  padding:24px;
-  background:linear-gradient(145deg,rgba(18,25,35,.98),rgba(8,11,16,.98));
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  transition:.2s;
-}
-
-.card:hover{
-  border-color:rgba(184,255,106,.35);
-  transform:translateY(-2px);
-}
-
-/* COMMAND CENTER */
-
-.command{
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:16px;
-}
-
-.command-box{
-  padding:28px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-}
-
-.command-action{
-  font-size:1.75rem;
-  line-height:1.12;
-  letter-spacing:-.04em;
-}
-
-.command-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px;
-}
-
-/* METRICS */
-
-.dashboard{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:11px;
-}
-
-.metric{
-  padding:18px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-}
-
-.metric-label{
-  color:var(--muted);
-  font-size:.63rem;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-.metric-value{
-  margin-top:5px;
-  font-size:1.75rem;
-  font-weight:950;
-  letter-spacing:-.05em;
-}
-
-/* FORMS */
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-}
-
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.field.full{
-  grid-column:1/-1;
-}
-
-label{
-  color:var(--muted);
-  font-size:.68rem;
-  font-weight:900;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-
-/* BUTTONS */
-
-.button-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  margin-top:18px;
-}
-
-.button{
-  padding:11px 16px;
-  background:var(--surface2);
-  color:var(--text);
-  border:1px solid var(--border);
-  border-radius:10px;
-  font-weight:850;
-}
-
-.button:hover{
-  border-color:var(--green);
-}
-
-.button.primary{
-  background:var(--green);
-  color:#071006;
-  border-color:var(--green);
-}
-
-.button.blue{
-  background:var(--blue);
-  color:#07101e;
-  border-color:var(--blue);
-}
-
-.button.purple{
-  background:var(--purple);
-  color:#130b1e;
-  border-color:var(--purple);
-}
-
-.button.danger{
-  color:var(--red);
-}
-
-/* BADGES */
-
-.badge{
-  display:inline-flex;
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:.62rem;
-  font-weight:900;
-  text-transform:uppercase;
-  margin-right:5px;
-}
-
-.badge.fact{
-  background:rgba(120,168,255,.12);
-  color:var(--blue);
-}
-
-.badge.inference{
-  background:rgba(255,209,102,.12);
-  color:var(--yellow);
-}
-
-.badge.hypothesis{
-  background:rgba(184,255,106,.12);
-  color:var(--green);
-}
-
-.badge.high{
-  background:rgba(184,255,106,.12);
-  color:var(--green);
-}
-
-.badge.medium{
-  background:rgba(255,209,102,.12);
-  color:var(--yellow);
-}
-
-.badge.low{
-  background:rgba(255,113,130,.12);
-  color:var(--red);
-}
-
-/* PROGRESS */
-
-.progress{
-  width:100%;
-  height:8px;
-  margin-top:13px;
-  overflow:hidden;
-  background:var(--surface3);
-  border-radius:999px;
-}
-
-.progress-bar{
-  width:0;
-  height:100%;
-  background:var(--green);
-  border-radius:999px;
-  transition:.4s;
-}
-
-/* LEVERAGE */
-
-.leverage-score{
-  font-size:3rem;
-  font-weight:950;
-  color:var(--green);
-  letter-spacing:-.07em;
-}
-
-.formula{
-  padding:14px;
-  margin-top:14px;
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:11px;
-  color:var(--muted);
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:.78rem;
-}
-
-/* SCORE */
-
-.score-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-}
-
-.score-row{
-  display:grid;
-  grid-template-columns:1fr 100px;
-  align-items:center;
-  gap:20px;
-  padding:14px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.score-row:last-child{
-  border-bottom:none;
-}
-
-.score-display{
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:40px;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  background:radial-gradient(circle,rgba(184,255,106,.09),transparent 65%);
-  text-align:center;
-}
-
-.score-number{
-  font-size:6rem;
-  line-height:.9;
-  color:var(--green);
-  font-weight:950;
-  letter-spacing:-.09em;
-}
-
-/* LIST */
-
-.list{
-  display:grid;
-  gap:10px;
-}
-
-.list-item{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:15px 17px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:11px;
-}
-
-.list-item button{
-  background:none;
-  color:var(--red);
-  font-weight:950;
-  font-size:1.1rem;
-}
-
-/* PROTOCOL */
-
-.protocol{
-  overflow:hidden;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  background:var(--surface);
-}
-
-.protocol-row{
-  display:grid;
-  grid-template-columns:110px 1fr;
-  gap:20px;
-  padding:18px 22px;
-  border-bottom:1px solid var(--border);
-}
-
-.protocol-row:last-child{
-  border-bottom:none;
-}
-
-.protocol-time{
-  color:var(--green);
-  font-size:.7rem;
-  font-weight:950;
-}
-
-/* LOOP */
-
-.loop{
-  max-width:800px;
-  margin:auto;
-  display:grid;
-}
-
-.loop-step{
-  padding:18px;
-  text-align:center;
-  background:var(--surface);
-  border:1px solid var(--border);
-}
-
-.loop-step strong{
-  color:var(--green);
-}
-
-.arrow{
-  height:21px;
-  color:var(--muted);
-  text-align:center;
-  line-height:21px;
-}
-
-/* TABLE */
-
-.table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.table th,
-.table td{
-  padding:13px;
-  text-align:left;
-  border-bottom:1px solid var(--border);
-}
-
-.table th{
-  color:var(--muted);
-  font-size:.68rem;
-  text-transform:uppercase;
-}
-
-/* QUOTE */
-
-.quote{
-  margin-top:28px;
-  padding:16px 0 16px 22px;
-  border-left:3px solid var(--green);
-  font-size:1.12rem;
-  font-weight:750;
-}
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:2000;
-  padding:13px 17px;
-  background:var(--surface3);
-  border:1px solid var(--border);
-  border-radius:12px;
-  opacity:0;
-  transform:translateY(10px);
-  pointer-events:none;
-  transition:.25s;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* FOOTER */
-
-footer{
-  padding:100px 0;
-  border-top:1px solid var(--border);
-  text-align:center;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:1050px){
-
-  .dashboard{
-    grid-template-columns:repeat(4,1fr);
-  }
-
-  .hero-grid,
-  .command,
-  .score-layout{
-    grid-template-columns:1fr;
-  }
-
-}
-
-@media(max-width:750px){
-
-  .grid,
-  .grid.two,
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .dashboard{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .field.full{
-    grid-column:auto;
-  }
-
-}
-
-@media(max-width:500px){
-
-  .hero{
-    padding-top:65px;
-  }
-
-  .dashboard{
-    grid-template-columns:1fr;
-  }
-
-  .protocol-row{
-    grid-template-columns:1fr;
-    gap:4px;
-  }
-
-  .score-number{
-    font-size:4.5rem;
-  }
-
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manifestation OS is an identity-based operating system for turning intention into aligned action, evidence, reflection, and personal transformation.">
+  <meta name="theme-color" content="#0b0a0f">
+
+  <title>Manifestation OS — Identity → Action → Evidence</title>
+
+  <style>
+    :root {
+      --bg: #08070b;
+      --surface: #100e15;
+      --surface-2: #15121c;
+      --surface-3: #1b1724;
+      --border: rgba(255,255,255,.09);
+      --border-hover: rgba(255,255,255,.18);
+
+      --text: #f5f1e8;
+      --muted: #9993a5;
+      --dim: #676171;
+
+      --gold: #d9b56d;
+      --gold-bright: #f1d18b;
+      --blue: #7aa9ff;
+      --purple: #a98cff;
+      --green: #76d6a1;
+      --red: #ef7474;
+
+      --radius: 18px;
+      --radius-sm: 12px;
+
+      --max-width: 1240px;
+
+      --shadow:
+        0 20px 60px rgba(0,0,0,.35);
+
+      --transition:
+        180ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 50% -10%,
+          rgba(169,140,255,.09),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 30%,
+          rgba(217,181,109,.05),
+          transparent 30%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--max-width)
+      );
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(8,7,11,.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .14em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--gold);
+    }
+
+    .nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 11px;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .nav a:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 90px 0 70px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 9vw, 112px);
+      line-height: .86;
+      letter-spacing: -.07em;
+      font-weight: 950;
+      margin-bottom: 28px;
+    }
+
+    .hero-description {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.65;
+    }
+
+    .hero-description strong {
+      color: var(--text);
+    }
+
+    .hero-loop {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.015)
+        );
+      box-shadow: var(--shadow);
+      text-align: center;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.45;
+    }
+
+    .hero-loop .arrow {
+      color: var(--dim);
+      font-size: 18px;
+    }
+
+    /* =========================
+       COMMAND BAR
+    ========================= */
+
+    .command-bar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--gold-bright);
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 800;
+      width: fit-content;
+    }
+
+    .score-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px var(--gold);
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .button {
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 11px 16px;
+      min-height: 44px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: var(--border-hover);
+      background: var(--surface-3);
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: #16110a;
+      border-color: var(--gold);
+    }
+
+    .button.primary:hover {
+      background: var(--gold-bright);
+    }
+
+    .button.blue {
+      color: #c9dcff;
+      border-color: rgba(122,169,255,.3);
+      background: rgba(122,169,255,.08);
+    }
+
+    .button.purple {
+      color: #ddceff;
+      border-color: rgba(169,140,255,.3);
+      background: rgba(169,140,255,.08);
+    }
+
+    .button.danger {
+      color: #ffadad;
+      border-color: rgba(239,116,116,.25);
+      background: rgba(239,116,116,.06);
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 55px 0;
+      border-top: 1px solid var(--border);
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      margin-bottom: 26px;
+    }
+
+    .section-number {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    .section-description {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 680px;
+    }
+
+    /* =========================
+       GRID / CARDS
+    ========================= */
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+
+    .card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.045),
+          rgba(255,255,255,.018)
+        );
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.18);
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card + .card {
+      margin-top: 0;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 7px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      color: var(--text);
+      background: rgba(0,0,0,.22);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 13px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    input {
+      min-height: 46px;
+    }
+
+    textarea {
+      min-height: 110px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(217,181,109,.55);
+      box-shadow: 0 0 0 3px rgba(217,181,109,.08);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #57525f;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 18px;
+    }
+
+    .identity-display {
+      padding: 30px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(169,140,255,.12),
+          transparent 40%
+        ),
+        var(--surface);
+    }
+
+    .identity-label {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .identity-quote {
+      font-size: clamp(24px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      font-weight: 800;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metric:last-child {
+      border-bottom: 0;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      color: var(--gold-bright);
+      font-size: 20px;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 999px;
+      background: #211d28;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--gold)
+      );
+      transition: width .4s ease;
+    }
+
+    /* =========================
+       ACTION ITEMS
+    ========================= */
+
+    .action-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .action-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(0,0,0,.15);
+    }
+
+    .action-item.completed {
+      opacity: .55;
+    }
+
+    .action-item.completed .action-title {
+      text-decoration: line-through;
+    }
+
+    .action-title {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .action-meta {
+      color: var(--dim);
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    /* =========================
+       TAGS
+    ========================= */
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       ONBOARDING
+    ========================= */
+
+    .onboarding-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(12px);
+    }
+
+    .onboarding-overlay.active {
+      display: flex;
+    }
+
+    .onboarding {
+      width: min(100%, 680px);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #0e0c13;
+      border: 1px solid var(--border-hover);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.55);
+    }
+
+    .onboarding-step {
+      display: none;
+    }
+
+    .onboarding-step.active {
+      display: block;
+    }
+
+    .step-indicator {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+
+    .onboarding h2 {
+      margin-bottom: 12px;
+    }
+
+    .onboarding p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 9px;
+    }
+
+    .choice {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px;
+      background: var(--surface);
+      color: var(--muted);
+      text-align: left;
+      transition: var(--transition);
+    }
+
+    .choice.selected {
+      color: var(--text);
+      border-color: var(--gold);
+      background: rgba(217,181,109,.08);
+    }
+
+    /* =========================
+       NOTIFICATION
+    ========================= */
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      max-width: 360px;
+      padding: 14px 17px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #15121b;
+      box-shadow: var(--shadow);
+      color: var(--text);
+      font-size: 13px;
+      transform: translateY(30px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 70px 0 100px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-statement {
+      max-width: 850px;
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -.04em;
+      font-weight: 800;
+    }
+
+    .footer-statement span {
+      color: var(--gold);
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .hero,
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 35px;
+        padding-top: 60px;
+      }
+
+      .hero-loop {
+        max-width: 500px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .command-bar {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(
+          calc(100% - 24px),
+          var(--max-width)
+        );
+      }
+
+      .header-inner {
+        min-height: 60px;
+      }
+
+      .brand {
+        font-size: 12px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 48px 0 45px;
+      }
+
+      h1 {
+        font-size: clamp(52px, 17vw, 82px);
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 19px;
+        border-radius: 15px;
+      }
+
+      .hero-loop {
+        padding: 24px;
+        font-size: 13px;
+      }
+
+      .command-bar {
+        position: sticky;
+        bottom: 10px;
+        z-index: 50;
+        padding: 9px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: rgba(14,12,19,.9);
+        backdrop-filter: blur(15px);
+        box-shadow: var(--shadow);
+      }
+
+      .command-bar .button {
+        width: 100%;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .actions .button {
+        width: 100%;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .onboarding {
+        padding: 24px;
+        border-radius: 18px;
+      }
+
+      .toast {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        max-width: none;
+      }
+    }
+  </style>
 </head>
 
-<body>
+<body id="top">
 
-<header class="topbar">
-  <div class="container topbar-inner">
+<!-- =========================
+     ONBOARDING
+========================= -->
 
-    <a href="#top" class="brand">
+<div
+  class="onboarding-overlay"
+  id="onboardingOverlay"
+>
+  <div class="onboarding">
+
+    <div
+      class="onboarding-step active"
+      data-step="1"
+    >
+      <div class="step-indicator">
+        STEP 01 / 03 — IDENTITY
+      </div>
+
+      <h2>Who are you becoming?</h2>
+
+      <p>
+        Manifestation OS begins with identity.
+        Define the person whose decisions naturally
+        produce the life you want.
+      </p>
+
+      <div class="field">
+        <label>Your chosen identity</label>
+
+        <textarea
+          id="onboardingIdentity"
+          placeholder="I am disciplined, wealthy, creative, focused and capable."
+        ></textarea>
+      </div>
+
+      <div class="actions">
+        <button
+          class="button primary"
+          onclick="nextOnboardingStep()"
+        >
+          Continue →
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="onboarding-step"
+      data-step="2"
+    >
+      <div class="step-indicator">
+        STEP 02 / 03 — DIRECTION
+      </div>
+
+      <h2>Where should this identity express itself?</h2>
+
+      <p>
+        Select the domains that matter most right now.
+      </p>
+
+      <div class="choice-grid">
+        <button class="choice" onclick="toggleChoice(this)">
+          Wealth
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Career
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Health
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Relationships
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Creativity
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Learning
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Spirituality
+        </button>
+
+        <button class="choice" onclick="toggleChoice(this)">
+          Lifestyle
+        </button>
+      </div>
+
+      <div class="actions">
+        <button
+          class="button"
+          onclick="previousOnboardingStep()"
+        >
+          ← Back
+        </button>
+
+        <button
+          class="button primary"
+          onclick="nextOnboardingStep()"
+        >
+          Continue →
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="onboarding-step"
+      data-step="3"
+    >
+      <div class="step-indicator">
+        STEP 03 / 03 — EXECUTION
+      </div>
+
+      <h2>Build the daily loop.</h2>
+
+      <p>
+        Your system converts identity into behavior,
+        behavior into evidence, and evidence into
+        better decisions.
+      </p>
+
+      <div class="card">
+        <div class="metric">
+          <span>Morning</span>
+          <strong>Identity</strong>
+        </div>
+
+        <div class="metric">
+          <span>During day</span>
+          <strong>Action</strong>
+        </div>
+
+        <div class="metric">
+          <span>Evening</span>
+          <strong>Evidence</strong>
+        </div>
+
+        <div class="metric">
+          <span>Weekly</span>
+          <strong>Adaptation</strong>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button
+          class="button"
+          onclick="previousOnboardingStep()"
+        >
+          ← Back
+        </button>
+
+        <button
+          class="button primary"
+          onclick="finishOnboarding()"
+        >
+          Enter Manifestation OS
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+  <div class="container header-inner">
+
+    <a
+      href="#top"
+      class="brand"
+    >
       MANIFESTATION <span>OS</span>
     </a>
 
@@ -738,13 +1048,16 @@ footer{
   </div>
 </header>
 
-<main id="top">
 
-<!-- HERO -->
+<main>
 
-<section class="hero">
+<!-- =========================
+     HERO
+========================= -->
 
-  <div class="container hero-grid">
+<div class="container">
+
+  <section class="hero">
 
     <div>
 
@@ -757,30 +1070,345 @@ footer{
         OS
       </h1>
 
-      <p>
-        A personal operating system for transforming intention into
-        identity, strategy, action, evidence, experimentation,
-        feedback and compounding progress.
+      <p class="hero-description">
+        <strong>
+          Manifestation OS turns your desired identity
+          into a daily system of intention, action,
+          evidence and transformation.
+        </strong>
+        <br><br>
+        Use identity, visualization, assumptions,
+        strategy, experimentation and feedback to
+        create an increasingly powerful loop between
+        who you are, what you do and what becomes true.
       </p>
+
+      <div class="actions">
+        <button
+          class="button primary"
+          onclick="startOnboarding()"
+        >
+          Begin System
+        </button>
+
+        <button
+          class="button"
+          onclick="document.getElementById('command').scrollIntoView()"
+        >
+          Enter Dashboard
+        </button>
+      </div>
 
     </div>
 
     <div class="hero-loop">
 
-      INTENTION<br>
-      ↓<br>
-      IDENTITY<br>
-      ↓<br>
-      STRATEGY<br>
-      ↓<br>
-      ACTION<br>
-      ↓<br>
-      EVIDENCE<br>
-      ↓<br>
-      DIAGNOSIS<br>
-      ↓<br>
-      ADAPTATION<br>
-      ↺
+      INTENTION
+
+      <div class="arrow">↓</div>
+
+      IDENTITY
+
+      <div class="arrow">↓</div>
+
+      STRATEGY
+
+      <div class="arrow">↓</div>
+
+      ACTION
+
+      <div class="arrow">↓</div>
+
+      EVIDENCE
+
+      <div class="arrow">↓</div>
+
+      DIAGNOSIS
+
+      <div class="arrow">↓</div>
+
+      ADAPTATION
+
+      <div class="arrow">↺</div>
+
+    </div>
+
+  </section>
+
+
+<!-- =========================
+     COMMAND
+========================= -->
+
+<section id="command">
+
+  <div class="section-heading">
+    <div class="section-number">
+      01 / COMMAND
+    </div>
+
+    <h2>Command Center</h2>
+
+    <p class="section-description">
+      Reduce the entire system to the highest-leverage
+      decision available right now.
+    </p>
+  </div>
+
+  <div class="command-bar">
+
+    <div
+      class="score"
+      id="commandScore"
+    >
+      <span class="score-dot"></span>
+      Score: 0
+    </div>
+
+    <button
+      class="button primary"
+      onclick="executeRecommendation()"
+    >
+      Execute
+    </button>
+
+    <button
+      class="button blue"
+      onclick="generateRecommendation()"
+    >
+      Recalculate
+    </button>
+
+  </div>
+
+
+  <div class="dashboard">
+
+    <div class="card identity-display">
+
+      <div class="identity-label">
+        Current Operating Identity
+      </div>
+
+      <div
+        class="identity-quote"
+        id="identityDisplay"
+      >
+        Define who you are becoming.
+      </div>
+
+      <div class="actions">
+        <a
+          class="button"
+          href="#identity"
+        >
+          Edit Identity
+        </a>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>System State</h3>
+
+      <div class="metric">
+        <span>Trajectory</span>
+        <strong id="trajectoryMetric">
+          0%
+        </strong>
+      </div>
+
+      <div class="metric">
+        <span>Evidence</span>
+        <strong id="evidenceMetric">
+          0
+        </strong>
+      </div>
+
+      <div class="metric">
+        <span>Actions</span>
+        <strong id="actionMetric">
+          0
+        </strong>
+      </div>
+
+      <div class="metric">
+        <span>Experiments</span>
+        <strong id="experimentMetric">
+          0
+        </strong>
+      </div>
+
+      <div class="progress">
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
+
+    <h3>System Recommendation</h3>
+
+    <p id="recommendation">
+      Define an objective and identity to generate
+      a recommendation.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     DIRECTION
+========================= -->
+
+<section id="direction">
+
+  <div class="section-heading">
+    <div class="section-number">
+      02 / DIRECTION
+    </div>
+
+    <h2>Choose the Direction</h2>
+
+    <p class="section-description">
+      Define an observable destination instead of
+      relying on vague desire.
+    </p>
+  </div>
+
+
+  <div class="card">
+
+    <div class="field">
+
+      <label>
+        Primary Objective
+      </label>
+
+      <input
+        id="goalInput"
+        placeholder="What are you building, becoming, experiencing or mastering?"
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Why?
+      </label>
+
+      <textarea
+        id="whyInput"
+        placeholder="Why does this matter?"
+      ></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Desired End State
+      </label>
+
+      <textarea
+        id="desiredStateInput"
+        placeholder="Describe the reality you intend to experience."
+      ></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>
+        Success Metric
+      </label>
+
+      <input
+        id="successMetricInput"
+        placeholder="What number or observable result defines success?"
+      >
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+      <div class="field">
+
+        <label>
+          Current Value
+        </label>
+
+        <input
+          id="currentValueInput"
+          type="number"
+          placeholder="0"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Target Value
+        </label>
+
+        <input
+          id="targetValueInput"
+          type="number"
+          placeholder="100"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Deadline
+        </label>
+
+        <input
+          id="deadlineInput"
+          type="date"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="actions">
+
+      <button
+        class="button primary"
+        onclick="saveState()"
+      >
+        Save Objective
+      </button>
+
+      <button
+        class="button blue"
+        onclick="calculateProgress()"
+      >
+        Calculate Trajectory
+      </button>
 
     </div>
 
@@ -789,3346 +1417,2432 @@ footer{
 </section>
 
 
-<!-- COMMAND -->
-
-<section id="command">
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-01 — COMMAND CENTER
-</div>
-
-<h2>
-What should I do next?
-</h2>
-
-<p class="lead">
-The command center converts your current objective, bottleneck,
-available actions and evidence into a practical next move.
-</p>
-
-</div>
-
-
-<div class="dashboard">
-
-<div class="metric">
-<div class="metric-label">M-Score</div>
-<div class="metric-value" id="metricScore">0</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Goal Progress</div>
-<div class="metric-value" id="metricProgress">0%</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Evidence</div>
-<div class="metric-value" id="metricEvidence">0</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Actions</div>
-<div class="metric-value" id="metricActions">0</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Experiments</div>
-<div class="metric-value" id="metricExperiments">0</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Streak</div>
-<div class="metric-value" id="metricStreak">0</div>
-</div>
-
-<div class="metric">
-<div class="metric-label">Leverage</div>
-<div class="metric-value" id="metricLeverage">0</div>
-</div>
-
-</div>
-
-
-<div class="command" style="margin-top:18px;">
-
-<div class="command-box">
-
-<div class="eyebrow">
-Highest-Leverage Next Action
-</div>
-
-<div
-class="command-action"
-id="commandAction"
->
-Define your objective and candidate actions.
-</div>
-
-<div class="command-meta">
-
-<span class="badge high">
-Recommended
-</span>
-
-<span
-class="badge"
-id="commandScore"
->
-Score: 0
-</span>
-
-</div>
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="executeRecommendation()"
->
-Execute
-</button>
-
-<button
-class="button blue"
-onclick="generateRecommendation()"
->
-Recalculate
-</button>
-
-</div>
-
-</div>
-
-
-<div class="command-box">
-
-<div class="eyebrow">
-Current Bottleneck
-</div>
-
-<h3 id="bottleneck">
-Calculating...
-</h3>
-
-<p
-class="muted"
-id="bottleneckText"
-style="margin-top:8px;"
->
-Calculating the weakest part of your current system.
-</p>
-
-<div class="formula">
-Impact × Probability × Leverage ÷ Effort
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- DIRECTION -->
-
-<section id="direction">
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-02 — DIRECTION ENGINE
-</div>
-
-<h2>
-Choose the destination.
-</h2>
-
-<p class="lead">
-A desire becomes strategically useful when it has a clear outcome,
-metric, horizon and definition of success.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field full">
-
-<label>Primary objective</label>
-
-<input
-id="goalInput"
-placeholder="What are you building, becoming, experiencing or mastering?"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Why?</label>
-
-<textarea
-id="whyInput"
-placeholder="Why does this matter?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Desired end state</label>
-
-<textarea
-id="endStateInput"
-placeholder="What would fulfilled look like?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Success metric</label>
-
-<input
-id="successMetricInput"
-placeholder="What number or observable result defines success?"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Current value</label>
-
-<input
-id="currentValueInput"
-type="number"
-placeholder="0"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Target value</label>
-
-<input
-id="targetValueInput"
-type="number"
-placeholder="100"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Deadline</label>
-
-<input
-id="deadlineInput"
-type="date"
->
-
-</div>
-
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Objective
-</button>
-
-<button
-class="button blue"
-onclick="calculateProgress()"
->
-Calculate Trajectory
-</button>
-
-</div>
-
-
-<div
-class="progress"
-style="margin-top:20px;"
->
-
-<div
-class="progress-bar"
-id="goalProgressBar"
-></div>
-
-</div>
-
-<p
-class="muted"
-id="trajectoryText"
-style="margin-top:8px;"
->
-Define current and target values.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- IDENTITY -->
+<!-- =========================
+     IDENTITY
+========================= -->
 
 <section id="identity">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      03 / IDENTITY
+    </div>
 
-<div class="section-number">
-03 — IDENTITY ENGINE
-</div>
+    <h2>Become the Cause</h2>
 
-<h2>
-Become the cause.
-</h2>
+    <p class="section-description">
+      Identity defines the standards, assumptions and
+      behaviors from which your future actions emerge.
+    </p>
 
-<p class="lead">
-Define the identity, standards and behaviors that make your desired
-trajectory increasingly natural.
-</p>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="grid grid-2">
 
-<div class="form-grid">
+    <div class="card">
 
-<div class="field">
+      <div class="field">
 
-<label>I AM</label>
+        <label>
+          I AM
+        </label>
 
-<textarea
-id="identityInput"
-placeholder="I am a disciplined builder who creates valuable assets."
-></textarea>
+        <textarea
+          id="identityInput"
+          placeholder="I am..."
+        ></textarea>
 
-</div>
+      </div>
 
+      <div class="field">
 
-<div class="field">
+        <label>
+          Standards
+        </label>
 
-<label>Standards</label>
+        <textarea
+          id="standardsInput"
+          placeholder="What do you no longer tolerate? What do you consistently do?"
+        ></textarea>
 
-<textarea
-id="standardsInput"
-placeholder="What standards does this identity refuse to violate?"
-></textarea>
+      </div>
 
-</div>
-
-
-<div class="field">
-
-<label>Core assumptions</label>
-
-<textarea
-id="assumptionsInput"
-placeholder="What assumptions support this identity?"
-></textarea>
-
-</div>
+    </div>
 
 
-<div class="field">
+    <div class="card">
 
-<label>Desired state</label>
+      <div class="field">
 
-<textarea
-id="stateInput"
-placeholder="Calm certainty, curiosity, discipline, abundance..."
-></textarea>
+        <label>
+          Core Assumptions
+        </label>
 
-</div>
+        <textarea
+          id="assumptionsInput"
+          placeholder="What must you believe to naturally operate from this identity?"
+        ></textarea>
 
-</div>
+      </div>
+
+      <div class="field">
+
+        <label>
+          Desired State
+        </label>
+
+        <textarea
+          id="identityDesiredStateInput"
+          placeholder="How does this version of you think, feel and behave?"
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
-<div class="button-row">
+  <div class="actions">
 
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Identity
-</button>
+    <button
+      class="button primary"
+      onclick="saveState()"
+    >
+      Save Identity
+    </button>
 
-<button
-class="button blue"
-onclick="generateIdentityBehavior()"
->
-Generate Behavior
-</button>
+    <button
+      class="button blue"
+      onclick="generateIdentityBehavior()"
+    >
+      Generate Behavior
+    </button>
 
-</div>
+  </div>
 
 
-<div
-id="identityBehavior"
-class="quote hidden"
-></div>
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
 
-</div>
+    <h3>Identity → Behavior</h3>
 
-</div>
+    <p id="identityBehavior">
+      Define your identity to generate corresponding
+      behavioral standards.
+    </p>
+
+  </div>
 
 </section>
 
 
-<!-- STRATEGY -->
+<!-- =========================
+     STRATEGY
+========================= -->
 
 <section id="strategy">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      04 / STRATEGY
+    </div>
 
-<div class="section-number">
-04 — STRATEGY ENGINE
-</div>
+    <h2>Engineer the Path</h2>
 
-<h2>
-Turn identity into mechanics.
-</h2>
+    <p class="section-description">
+      Separate what you want from how you will
+      increase the probability of getting it.
+    </p>
 
-<p class="lead">
-The system distinguishes internal state from external strategy.
-Belief can influence behavior, but behavior is what produces evidence.
-</p>
-
-</div>
+  </div>
 
 
-<div class="grid two">
+  <div class="card">
 
-<div class="card">
+    <div class="field">
 
-<h3>
-Leading indicators
-</h3>
+      <label>
+        Strategic Approach
+      </label>
 
-<p class="muted">
-Behaviors you control.
-</p>
+      <textarea
+        id="strategyInput"
+        placeholder="What strategy gives you the highest probability of reaching the objective?"
+      ></textarea>
 
-<textarea
-id="leadingInput"
-style="margin-top:14px;"
-placeholder="Hours built, outreach sent, experiments run, workouts completed..."
-></textarea>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <div class="grid grid-3">
 
-<h3>
-Lagging indicators
-</h3>
+      <div class="field">
 
-<p class="muted">
-Results reality gives you.
-</p>
+        <label>
+          Constraint
+        </label>
 
-<textarea
-id="laggingInput"
-style="margin-top:14px;"
-placeholder="Revenue, users, performance, relationships, completed projects..."
-></textarea>
+        <input
+          id="constraintInput"
+          placeholder="Main bottleneck"
+        >
 
-</div>
+      </div>
 
-</div>
+      <div class="field">
+
+        <label>
+          Leverage
+        </label>
+
+        <input
+          id="leverageInput"
+          placeholder="Biggest force multiplier"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Resource
+        </label>
+
+        <input
+          id="resourceInput"
+          placeholder="What do you need?"
+        >
+
+      </div>
+
+    </div>
 
 
-<div class="card" style="margin-top:16px;">
+    <button
+      class="button primary"
+      onclick="saveState()"
+    >
+      Save Strategy
+    </button>
 
-<h3>
-Strategy
-</h3>
-
-<textarea
-id="strategyInput"
-placeholder="What mechanism do you believe will move the objective?"
-></textarea>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Strategy
-</button>
-
-</div>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<!-- LEVERAGE -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-05 — LEVERAGE ENGINE
-</div>
-
-<h2>
-Rank the possible moves.
-</h2>
-
-<p class="lead">
-Don't merely ask what you can do. Ask which action creates the largest
-downstream effect relative to its cost.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Action</label>
-
-<input
-id="actionInput"
-placeholder="What could you do?"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Impact — 0 to 10</label>
-
-<input
-id="actionImpact"
-type="number"
-min="0"
-max="10"
-value="8"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Probability — 0 to 10</label>
-
-<input
-id="actionProbability"
-type="number"
-min="0"
-max="10"
-value="7"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Leverage — 0 to 10</label>
-
-<input
-id="actionLeverage"
-type="number"
-min="0"
-max="10"
-value="8"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Effort — 1 to 10</label>
-
-<input
-id="actionEffort"
-type="number"
-min="1"
-max="10"
-value="3"
->
-
-</div>
-
-</div>
-
-
-<div class="formula">
-Leverage Score =
-Impact × Probability × Leverage ÷ Effort
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="addAction()"
->
-Add Candidate Action
-</button>
-
-</div>
-
-
-<div
-id="actionList"
-class="list"
-style="margin-top:20px;"
-></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- EXECUTION -->
+<!-- =========================
+     EXECUTION
+========================= -->
 
 <section id="execution">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      05 / EXECUTION
+    </div>
 
-<div class="section-number">
-06 — EXECUTION ENGINE
-</div>
+    <h2>Convert Intention Into Action</h2>
 
-<h2>
-Execute the highest-value move.
-</h2>
+    <p class="section-description">
+      The system ultimately has to produce behavior.
+    </p>
 
-</div>
-
-
-<div class="protocol">
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-01 — IDENTITY
-</div>
-
-<div>
-Who am I choosing to be today?
-</div>
-
-</div>
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-02 — TARGET
-</div>
-
-<div>
-What measurable outcome am I moving?
-</div>
-
-</div>
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-03 — BOTTLENECK
-</div>
-
-<div>
-What currently prevents progress?
-</div>
-
-</div>
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-04 — LEVERAGE
-</div>
-
-<div>
-Which action has the highest expected downstream effect?
-</div>
-
-</div>
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-05 — EXECUTE
-</div>
-
-<div>
-Take the action before seeking more certainty.
-</div>
-
-</div>
-
-<div class="protocol-row">
-
-<div class="protocol-time">
-06 — MEASURE
-</div>
-
-<div>
-Record what actually happened.
-</div>
-
-</div>
-
-</div>
+  </div>
 
 
-<div class="card" style="margin-top:18px;">
+  <div class="grid grid-2">
 
-<div class="field">
+    <div class="card">
 
-<label>Today's highest-leverage action</label>
+      <h3>Candidate Action</h3>
 
-<input
-id="dailyActionInput"
-placeholder="One action that materially changes the trajectory."
->
+      <div class="field">
 
-</div>
+        <label>
+          Action
+        </label>
 
+        <input
+          id="actionInput"
+          placeholder="What could you do?"
+        >
 
-<div class="field" style="margin-top:15px;">
-
-<label>If / Then rule</label>
-
-<input
-id="ifThenInput"
-placeholder="If X happens, then I immediately do Y."
->
-
-</div>
+      </div>
 
 
-<div class="button-row">
+      <div class="grid grid-2">
 
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Daily Plan
-</button>
+        <div class="field">
 
-<button
-class="button"
-onclick="completeAction()"
->
-Mark Complete
-</button>
+          <label>
+            Impact — 0 to 10
+          </label>
 
-</div>
+          <input
+            id="actionImpact"
+            type="number"
+            min="0"
+            max="10"
+            value="8"
+          >
 
-</div>
+        </div>
 
-</div>
+        <div class="field">
+
+          <label>
+            Probability — 0 to 10
+          </label>
+
+          <input
+            id="actionProbability"
+            type="number"
+            min="0"
+            max="10"
+            value="7"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            Leverage — 0 to 10
+          </label>
+
+          <input
+            id="actionLeverage"
+            type="number"
+            min="0"
+            max="10"
+            value="8"
+          >
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            Effort — 1 to 10
+          </label>
+
+          <input
+            id="actionEffort"
+            type="number"
+            min="1"
+            max="10"
+            value="3"
+          >
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="button primary"
+        onclick="addAction()"
+      >
+        Add Candidate Action
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Today's Highest-Leverage Action</h3>
+
+      <div class="field">
+
+        <label>
+          Daily Action
+        </label>
+
+        <input
+          id="dailyActionInput"
+          placeholder="One action that materially changes the trajectory."
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          If / Then Rule
+        </label>
+
+        <input
+          id="ifThenInput"
+          placeholder="If X happens, then I immediately do Y."
+        >
+
+      </div>
+
+
+      <div class="actions">
+
+        <button
+          class="button primary"
+          onclick="saveState()"
+        >
+          Save Daily Plan
+        </button>
+
+        <button
+          class="button"
+          onclick="completeAction()"
+        >
+          Mark Complete
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
+
+    <h3>Candidate Actions</h3>
+
+    <div
+      id="actionList"
+      class="action-list"
+    >
+      <p class="muted">
+        No candidate actions yet.
+      </p>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- EVIDENCE -->
+<!-- =========================
+     EVIDENCE
+========================= -->
 
 <section id="evidence">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      06 / EVIDENCE
+    </div>
 
-<div class="section-number">
-07 — EVIDENCE ENGINE
-</div>
+    <h2>Collect Reality</h2>
 
-<h2>
-Create proof.
-</h2>
+    <p class="section-description">
+      Replace vague interpretation with observable
+      evidence and feedback.
+    </p>
 
-<p class="lead">
-Track observable events. Evidence is feedback—not validation of your worth.
-</p>
-
-</div>
+  </div>
 
 
-<div class="card">
+  <div class="grid grid-2">
 
-<div class="form-grid">
+    <div class="card">
 
-<div class="field full">
+      <div class="field">
 
-<label>Evidence</label>
+        <label>
+          Evidence
+        </label>
 
-<input
-id="evidenceInput"
-placeholder="What happened?"
->
+        <textarea
+          id="evidenceInput"
+          placeholder="What happened?"
+        ></textarea>
 
-</div>
-
-
-<div class="field">
-
-<label>Category</label>
-
-<select id="evidenceCategory">
-
-<option>Identity</option>
-<option>Action</option>
-<option>Opportunity</option>
-<option>Result</option>
-<option>Learning</option>
-
-</select>
-
-</div>
+      </div>
 
 
-<div class="field">
+      <div class="grid grid-2">
 
-<label>Impact</label>
+        <div class="field">
 
-<select id="evidenceImpact">
+          <label>
+            Category
+          </label>
 
-<option value="1">1 — Small</option>
-<option value="2">2 — Moderate</option>
-<option value="3">3 — Significant</option>
-<option value="4">4 — Major</option>
-<option value="5">5 — Transformative</option>
+          <select id="evidenceCategory">
 
-</select>
+            <option>Action</option>
+            <option>Opportunity</option>
+            <option>Result</option>
+            <option>Behavior</option>
+            <option>External Event</option>
 
-</div>
+          </select>
 
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="addEvidence()"
->
-Record Evidence
-</button>
-
-</div>
+        </div>
 
 
-<div
-id="evidenceList"
-class="list"
-style="margin-top:20px;"
-></div>
+        <div class="field">
 
-</div>
+          <label>
+            Impact
+          </label>
 
-</div>
+          <select id="evidenceImpact">
+
+            <option value="1">1 — Low</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 — High</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="button primary"
+        onclick="addEvidence()"
+      >
+        Record Evidence
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Reality Check</h3>
+
+      <div class="field">
+
+        <label>
+          Expected
+        </label>
+
+        <textarea
+          id="expectedInput"
+          placeholder="What did you expect?"
+        ></textarea>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Observed
+        </label>
+
+        <textarea
+          id="observedInput"
+          placeholder="What actually happened?"
+        ></textarea>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Gap
+        </label>
+
+        <textarea
+          id="gapInput"
+          placeholder="Where did expectation and reality differ?"
+        ></textarea>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Lesson
+        </label>
+
+        <textarea
+          id="lessonInput"
+          placeholder="What should change because of this?"
+        ></textarea>
+
+      </div>
+
+      <button
+        class="button primary"
+        onclick="saveState()"
+      >
+        Save Reality Check
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
+
+    <h3>Evidence Log</h3>
+
+    <div
+      id="evidenceList"
+      class="action-list"
+    >
+      <p class="muted">
+        No evidence recorded yet.
+      </p>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- REALITY -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-08 — REALITY CHECK
-</div>
-
-<h2>
-Compare expectation with observation.
-</h2>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Expected</label>
-
-<textarea
-id="expectedInput"
-placeholder="What did I predict?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Observed</label>
-
-<textarea
-id="observedInput"
-placeholder="What actually happened?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Gap</label>
-
-<textarea
-id="gapInput"
-placeholder="Where did prediction differ from reality?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Lesson</label>
-
-<textarea
-id="lessonInput"
-placeholder="What information did reality provide?"
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Reality Check
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ASSUMPTIONS -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-09 — ASSUMPTION AUDIT
-</div>
-
-<h2>
-Separate belief from evidence.
-</h2>
-
-<p class="lead">
-This keeps the system intellectually honest while leaving room for
-philosophical and spiritual interpretations.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Assumption</label>
-
-<input
-id="assumptionInput"
-placeholder="What am I assuming?"
->
-
-</div>
-
-
-<div class="field">
-
-<label>Classification</label>
-
-<select id="assumptionType">
-
-<option value="FACT">FACT</option>
-<option value="INFERENCE">INFERENCE</option>
-<option value="HYPOTHESIS">HYPOTHESIS</option>
-
-</select>
-
-</div>
-
-
-<div class="field full">
-
-<label>Test / Evidence</label>
-
-<textarea
-id="assumptionTest"
-placeholder="What observation would support or challenge this?"
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="addAssumption()"
->
-Add Assumption
-</button>
-
-</div>
-
-
-<div
-id="assumptionList"
-class="list"
-style="margin-top:20px;"
-></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- EXPERIMENTS -->
+<!-- =========================
+     EXPERIMENTS
+========================= -->
 
 <section id="experiments">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      07 / EXPERIMENTS
+    </div>
 
-<div class="section-number">
-10 — EXPERIMENT ENGINE
-</div>
+    <h2>Test Your Assumptions</h2>
 
-<h2>
-Convert assumptions into experiments.
-</h2>
+    <p class="section-description">
+      Treat beliefs as hypotheses that can be refined
+      through observation and experimentation.
+    </p>
 
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Hypothesis</label>
-
-<textarea
-id="experimentHypothesis"
-placeholder="I believe X will happen if I do Y."
-></textarea>
-
-</div>
+  </div>
 
 
-<div class="field">
+  <div class="grid grid-2">
 
-<label>Action</label>
+    <div class="card">
 
-<textarea
-id="experimentAction"
-placeholder="What will I actually do?"
-></textarea>
+      <h3>Assumption</h3>
 
-</div>
+      <div class="field">
 
+        <label>
+          Assumption
+        </label>
 
-<div class="field">
+        <input
+          id="assumptionInput"
+          placeholder="What am I assuming?"
+        >
 
-<label>Prediction</label>
-
-<textarea
-id="experimentPrediction"
-placeholder="What do I expect to observe?"
-></textarea>
-
-</div>
+      </div>
 
 
-<div class="field">
+      <div class="field">
 
-<label>Result</label>
+        <label>
+          Classification
+        </label>
 
-<textarea
-id="experimentResult"
-placeholder="What happened?"
-></textarea>
+        <select id="assumptionClassification">
 
-</div>
+          <option>Hypothesis</option>
+          <option>Belief</option>
+          <option>Known</option>
+          <option>Unknown</option>
 
-</div>
+        </select>
 
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="addExperiment()"
->
-Record Experiment
-</button>
-
-</div>
+      </div>
 
 
-<div
-id="experimentList"
-class="list"
-style="margin-top:20px;"
-></div>
+      <div class="field">
 
-</div>
+        <label>
+          Test / Evidence
+        </label>
 
-</div>
+        <textarea
+          id="assumptionTest"
+          placeholder="How could you test this?"
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="button primary"
+        onclick="addAssumption()"
+      >
+        Add Assumption
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>Experiment</h3>
+
+      <div class="field">
+
+        <label>
+          Hypothesis
+        </label>
+
+        <textarea
+          id="experimentHypothesis"
+          placeholder="If I do X, I predict Y."
+        ></textarea>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Action
+        </label>
+
+        <input
+          id="experimentAction"
+          placeholder="What will you test?"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Prediction
+        </label>
+
+        <input
+          id="experimentPrediction"
+          placeholder="What do you predict?"
+        >
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Result
+        </label>
+
+        <textarea
+          id="experimentResult"
+          placeholder="What happened?"
+        ></textarea>
+
+      </div>
+
+
+      <button
+        class="button primary"
+        onclick="addExperiment()"
+      >
+        Record Experiment
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
+
+    <h3>Experiment Log</h3>
+
+    <div
+      id="experimentList"
+      class="action-list"
+    >
+      <p class="muted">
+        No experiments recorded yet.
+      </p>
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- M SCORE -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-11 — SYSTEM HEALTH
-</div>
-
-<h2>
-Diagnose the machine.
-</h2>
-
-<p class="lead">
-M-Score is a diagnostic instrument, not a measurement of personal worth.
-</p>
-
-</div>
-
-
-<div class="score-layout">
-
-<div class="card">
-
-<div class="score-row">
-<label>Identity</label>
-<input class="scoreInput" type="number" min="0" max="10" value="8">
-</div>
-
-<div class="score-row">
-<label>Clarity</label>
-<input class="scoreInput" type="number" min="0" max="10" value="8">
-</div>
-
-<div class="score-row">
-<label>State</label>
-<input class="scoreInput" type="number" min="0" max="10" value="7">
-</div>
-
-<div class="score-row">
-<label>Attention</label>
-<input class="scoreInput" type="number" min="0" max="10" value="8">
-</div>
-
-<div class="score-row">
-<label>Action</label>
-<input class="scoreInput" type="number" min="0" max="10" value="8">
-</div>
-
-<div class="score-row">
-<label>Evidence</label>
-<input class="scoreInput" type="number" min="0" max="10" value="7">
-</div>
-
-<div class="score-row">
-<label>Persistence</label>
-<input class="scoreInput" type="number" min="0" max="10" value="8">
-</div>
-
-</div>
-
-
-<div class="score-display">
-
-<div class="score-number" id="scoreNumber">
-0
-</div>
-
-<div class="muted">
-M-SCORE / 100
-</div>
-
-<div class="progress">
-<div
-class="progress-bar"
-id="scoreBar"
-></div>
-</div>
-
-<p
-class="muted"
-id="scoreAdvice"
-style="margin-top:20px;"
->
-Calculating...
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- INNER STATE -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-12 — INNER STATE
-</div>
-
-<h2>
-Rehearse the identity.
-</h2>
-
-</div>
-
-
-<div class="card">
-
-<div class="form-grid">
-
-<div class="field">
-
-<label>Morning identity</label>
-
-<textarea
-id="morningInput"
-placeholder="How will I embody the identity today?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>End-state scene</label>
-
-<textarea
-id="sceneInput"
-placeholder="Describe a short scene implying completion."
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Evening evidence</label>
-
-<textarea
-id="eveningInput"
-placeholder="What did I actually do?"
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>Revision</label>
-
-<textarea
-id="revisionInput"
-placeholder="What changes tomorrow?"
-></textarea>
-
-</div>
-
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Journal
-</button>
-
-<button
-class="button blue"
-onclick="generateAffirmation()"
->
-Generate I AM
-</button>
-
-</div>
-
-
-<div
-id="affirmationOutput"
-class="quote hidden"
-></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- REVIEW -->
+<!-- =========================
+     REVIEW
+========================= -->
 
 <section id="review">
 
-<div class="container">
+  <div class="section-heading">
 
-<div class="section-header">
+    <div class="section-number">
+      08 / REVIEW
+    </div>
 
-<div class="section-number">
-13 — RECURSIVE REVIEW
-</div>
+    <h2>Close the Loop</h2>
 
-<h2>
-Improve the strategy.
-</h2>
+    <p class="section-description">
+      Reflection turns experience into information.
+      Information improves the next iteration.
+    </p>
 
-<p class="lead">
-Don't protect the strategy from reality. Let reality improve the strategy.
-</p>
-
-</div>
+  </div>
 
 
-<div class="grid">
+  <div class="grid grid-2">
 
-<div class="card">
-<h3>What did I intend?</h3>
-<p class="muted">
-What was the original target?
-</p>
-</div>
+    <div class="card">
 
-<div class="card">
-<h3>What did I do?</h3>
-<p class="muted">
-What behavior actually occurred?
-</p>
-</div>
+      <div class="field">
 
-<div class="card">
-<h3>What happened?</h3>
-<p class="muted">
-What did reality return?
-</p>
-</div>
+        <label>
+          Morning Identity
+        </label>
 
-<div class="card">
-<h3>What worked?</h3>
-<p class="muted">
-Which mechanisms deserve more resources?
-</p>
-</div>
+        <textarea
+          id="morningIdentity"
+          placeholder="Who am I choosing to be today?"
+        ></textarea>
 
-<div class="card">
-<h3>What failed?</h3>
-<p class="muted">
-Which assumptions or strategies should be discarded?
-</p>
-</div>
-
-<div class="card">
-<h3>What changes?</h3>
-<p class="muted">
-What is the next experiment?
-</p>
-</div>
-
-</div>
+      </div>
 
 
-<div class="card" style="margin-top:18px;">
+      <div class="field">
 
-<div class="field">
+        <label>
+          End-State Scene
+        </label>
 
-<label>Weekly synthesis</label>
+        <textarea
+          id="endStateScene"
+          placeholder="What does the desired reality look and feel like?"
+        ></textarea>
 
-<textarea
-id="weeklyReviewInput"
-style="min-height:200px;"
-placeholder="What did reality teach me this week?"
-></textarea>
+      </div>
 
-</div>
-
-
-<div class="button-row">
-
-<button
-class="button primary"
-onclick="saveState()"
->
-Save Review
-</button>
-
-<button
-class="button purple"
-onclick="generateNextExperiment()"
->
-Generate Next Experiment
-</button>
-
-</div>
+    </div>
 
 
-<div
-id="nextExperimentOutput"
-class="quote hidden"
-></div>
+    <div class="card">
 
-</div>
+      <div class="field">
 
-</div>
+        <label>
+          Evening Evidence
+        </label>
+
+        <textarea
+          id="eveningEvidence"
+          placeholder="What evidence did today produce?"
+        ></textarea>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Revision
+        </label>
+
+        <textarea
+          id="revisionInput"
+          placeholder="What should be changed tomorrow?"
+        ></textarea>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="actions">
+
+    <button
+      class="button primary"
+      onclick="saveState()"
+    >
+      Save Journal
+    </button>
+
+    <button
+      class="button blue"
+      onclick="generateAffirmation()"
+    >
+      Generate I AM
+    </button>
+
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:18px;"
+  >
+
+    <h3>Weekly Synthesis</h3>
+
+    <textarea
+      id="weeklySynthesis"
+      placeholder="What worked? What failed? What changed? What is now obvious?"
+    ></textarea>
+
+    <div class="actions">
+
+      <button
+        class="button primary"
+        onclick="saveState()"
+      >
+        Save Review
+      </button>
+
+      <button
+        class="button purple"
+        onclick="generateNextExperiment()"
+      >
+        Generate Next Experiment
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- MASTER LOOP -->
-
-<section>
-
-<div class="container">
-
-<div class="section-header">
-
-<div class="section-number">
-14 — MASTER LOOP
 </div>
-
-<h2>
-The operating system.
-</h2>
-
-</div>
-
-
-<div class="loop">
-
-<div class="loop-step">
-<strong>1. DESIRE</strong><br>
-Choose a meaningful direction.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>2. DEFINE</strong><br>
-Specify the desired outcome and metric.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>3. IDENTITY</strong><br>
-Define who can naturally produce it.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>4. STRATEGY</strong><br>
-Choose the mechanism most likely to work.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>5. LEVERAGE</strong><br>
-Rank actions by expected downstream effect.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>6. EXECUTE</strong><br>
-Take the highest-value action.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>7. EVIDENCE</strong><br>
-Record observable reality.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>8. DIAGNOSE</strong><br>
-Find the bottleneck.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>9. EXPERIMENT</strong><br>
-Test the next hypothesis.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>10. ADAPT</strong><br>
-Change the strategy based on information.
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="loop-step">
-<strong>11. COMPOUND</strong><br>
-Repeat with increasing leverage.
-</div>
-
-</div>
-
-
-<div class="quote">
-
-The objective is not to become better at wishing.
-The objective is to build an increasingly powerful feedback loop
-between <strong>identity, attention, action, evidence and adaptation.</strong>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTROLS -->
-
-<section>
-
-<div class="container">
-
-<div class="card">
-
-<h3>
-System Controls
-</h3>
-
-<p class="muted">
-Your data is stored locally in this browser. Export backups regularly.
-</p>
-
-<div class="button-row">
-
-<button
-class="button"
-onclick="exportData()"
->
-Export JSON
-</button>
-
-<button
-class="button"
-onclick="document.getElementById('importFile').click()"
->
-Import JSON
-</button>
-
-<input
-id="importFile"
-type="file"
-accept=".json"
-style="display:none"
-onchange="importData(event)"
->
-
-<button
-class="button danger"
-onclick="resetSystem()"
->
-Reset Everything
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 </main>
 
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-<div class="container">
+  <div class="container">
 
-<div class="eyebrow">
-Manifestation OS
-</div>
+    <div class="footer-statement">
 
-<h2>
-INTENTION → REALITY
-</h2>
+      The objective is not to become better at wishing.
 
-<p class="muted">
-Imagine clearly. Assume deliberately. Act intelligently.
-Measure honestly. Adapt relentlessly.
-</p>
+      <br><br>
 
-</div>
+      The objective is to build an increasingly powerful
+      feedback loop between
+      <span>
+        identity, attention, action, evidence and adaptation.
+      </span>
+
+    </div>
+
+
+    <div class="footer-actions">
+
+      <button
+        class="button"
+        onclick="exportData()"
+      >
+        Export JSON
+      </button>
+
+
+      <button
+        class="button"
+        onclick="document.getElementById('importFile').click()"
+      >
+        Import JSON
+      </button>
+
+
+      <input
+        id="importFile"
+        type="file"
+        accept=".json"
+        style="display:none"
+        onchange="importData(event)"
+      >
+
+
+      <button
+        class="button danger"
+        onclick="resetSystem()"
+      >
+        Reset Everything
+      </button>
+
+    </div>
+
+  </div>
 
 </footer>
 
 
-<div id="toast" class="toast">
-Saved.
-</div>
+<div
+  class="toast"
+  id="toast"
+></div>
 
 
 <script>
-
-/* =========================================================
-   MANIFESTATION OS
-   ADAPTIVE REALITY ENGINE
-========================================================= */
-
-const KEY="manifestation_os_v2";
-
-let state={
-  goal:"",
-  why:"",
-  endState:"",
-  successMetric:"",
-  currentValue:0,
-  targetValue:100,
-  deadline:"",
-
-  identity:"",
-  standards:"",
-  assumptions:"",
-  desiredState:"",
-
-  leading:"",
-  lagging:"",
-  strategy:"",
-
-  dailyAction:"",
-  ifThen:"",
-
-  expected:"",
-  observed:"",
-  gap:"",
-  lesson:"",
-
-  assumptionsLog:[],
-  evidence:[],
-  experiments:[],
-  actions:[],
-
-  journal:{
-    morning:"",
-    scene:"",
-    evening:"",
-    revision:"",
-    weekly:""
-  },
-
-  scores:[8,8,7,8,8,7,8],
-
-  actionsCompleted:0,
-  streak:0,
-  lastActionDate:null,
-
-  recommendation:null
-};
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function $(id){
-  return document.getElementById(id);
-}
-
-
-function today(){
-  return new Date()
-    .toISOString()
-    .slice(0,10);
-}
-
-
-function escapeHTML(value){
-  return String(value ?? "")
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-
-function clamp(value,min,max){
-  return Math.max(min,Math.min(max,value));
-}
-
-
-function toast(message){
-
-  const el=$("toast");
-
-  el.textContent=message;
-
-  el.classList.add("show");
-
-  setTimeout(()=>{
-    el.classList.remove("show");
-  },1800);
-
-}
-
-
-/* =========================================================
-   COLLECT
-========================================================= */
-
-function collect(){
-
-  state.goal=$("goalInput").value;
-  state.why=$("whyInput").value;
-  state.endState=$("endStateInput").value;
-  state.successMetric=$("successMetricInput").value;
-
-  state.currentValue=
-    Number($("currentValueInput").value)||0;
-
-  state.targetValue=
-    Number($("targetValueInput").value)||0;
-
-  state.deadline=$("deadlineInput").value;
-
-  state.identity=$("identityInput").value;
-  state.standards=$("standardsInput").value;
-  state.assumptions=$("assumptionsInput").value;
-  state.desiredState=$("stateInput").value;
-
-  state.leading=$("leadingInput").value;
-  state.lagging=$("laggingInput").value;
-  state.strategy=$("strategyInput").value;
-
-  state.dailyAction=$("dailyActionInput").value;
-  state.ifThen=$("ifThenInput").value;
-
-  state.expected=$("expectedInput").value;
-  state.observed=$("observedInput").value;
-  state.gap=$("gapInput").value;
-  state.lesson=$("lessonInput").value;
-
-  state.journal.morning=$("morningInput").value;
-  state.journal.scene=$("sceneInput").value;
-  state.journal.evening=$("eveningInput").value;
-  state.journal.revision=$("revisionInput").value;
-  state.journal.weekly=$("weeklyReviewInput").value;
-
-  state.scores=
-    [...document.querySelectorAll(".scoreInput")]
-      .map(x=>clamp(Number(x.value)||0,0,10));
-
-}
-
-
-/* =========================================================
-   STORAGE
-========================================================= */
-
-function saveState(){
-
-  collect();
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
-  );
-
-  update();
-
-  toast("System saved.");
-
-}
-
-
-function load(){
-
-  const saved=
-    localStorage.getItem(KEY);
-
-  if(saved){
-
-    try{
-
-      const parsed=
-        JSON.parse(saved);
-
-      state={
-        ...state,
-        ...parsed,
-
-        journal:{
-          ...state.journal,
-          ...(parsed.journal||{})
-        }
-
-      };
-
-    }catch(error){
-
-      console.error(
-        "Could not load saved state:",
-        error
-      );
-
-    }
-
-  }
-
-  populate();
-
-  update();
-
-}
-
-
-/* =========================================================
-   POPULATE
-========================================================= */
-
-function populate(){
-
-  $("goalInput").value=state.goal||"";
-  $("whyInput").value=state.why||"";
-  $("endStateInput").value=state.endState||"";
-  $("successMetricInput").value=state.successMetric||"";
-
-  $("currentValueInput").value=
-    state.currentValue??0;
-
-  $("targetValueInput").value=
-    state.targetValue??100;
-
-  $("deadlineInput").value=
-    state.deadline||"";
-
-  $("identityInput").value=
-    state.identity||"";
-
-  $("standardsInput").value=
-    state.standards||"";
-
-  $("assumptionsInput").value=
-    state.assumptions||"";
-
-  $("stateInput").value=
-    state.desiredState||"";
-
-  $("leadingInput").value=
-    state.leading||"";
-
-  $("laggingInput").value=
-    state.lagging||"";
-
-  $("strategyInput").value=
-    state.strategy||"";
-
-  $("dailyActionInput").value=
-    state.dailyAction||"";
-
-  $("ifThenInput").value=
-    state.ifThen||"";
-
-  $("expectedInput").value=
-    state.expected||"";
-
-  $("observedInput").value=
-    state.observed||"";
-
-  $("gapInput").value=
-    state.gap||"";
-
-  $("lessonInput").value=
-    state.lesson||"";
-
-  $("morningInput").value=
-    state.journal.morning||"";
-
-  $("sceneInput").value=
-    state.journal.scene||"";
-
-  $("eveningInput").value=
-    state.journal.evening||"";
-
-  $("revisionInput").value=
-    state.journal.revision||"";
-
-  $("weeklyReviewInput").value=
-    state.journal.weekly||"";
-
-  document
-    .querySelectorAll(".scoreInput")
-    .forEach((input,index)=>{
-      input.value=
-        state.scores[index]??0;
-    });
-
-}
-
-
-/* =========================================================
-   GOAL PROGRESS
-========================================================= */
-
-function calculateProgress(){
-
-  const current=
-    Number($("currentValueInput").value)||0;
-
-  const target=
-    Number($("targetValueInput").value)||0;
-
-  let progress=0;
-
-  if(target!==0){
-
-    progress=
-      clamp(
-        (current/target)*100,
-        0,
-        100
-      );
-
-  }
-
-
-  $("goalProgressBar").style.width=
-    progress+"%";
-
-  $("metricProgress").textContent=
-    Math.round(progress)+"%";
-
-
-  const deadline=
-    $("deadlineInput").value;
-
-
-  let trajectory="";
-
-
-  if(!deadline){
-
-    trajectory=
-      "No deadline defined.";
-
-  }else{
-
-    const days=
-      Math.ceil(
-        (
-          new Date(deadline)-
-          new Date()
-        )/
-        86400000
-      );
-
-
-    if(days<0){
-
-      trajectory=
-        "Deadline passed — revise the plan.";
-
-    }else if(progress>=80){
-
-      trajectory=
-        `${days} days remaining — trajectory is strong.`;
-
-    }else if(progress>=50){
-
-      trajectory=
-        `${days} days remaining — maintain execution.`;
-
-    }else{
-
-      trajectory=
-        `${days} days remaining — increase leverage or revise strategy.`;
-
-    }
-
-  }
-
-
-  $("trajectoryText").textContent=
-    trajectory;
-
-
-  return progress;
-
-}
-
-
-/* =========================================================
-   M-SCORE
-========================================================= */
-
-function calculateScore(){
-
-  const values=
-    [...document.querySelectorAll(".scoreInput")]
-      .map(x=>clamp(Number(x.value)||0,0,10));
-
-
-  const total=
-    values.reduce((a,b)=>a+b,0);
-
-
-  const score=
-    Math.round(
-      (total/(values.length*10))*100
-    );
-
-
-  $("scoreNumber").textContent=
-    score;
-
-  $("scoreBar").style.width=
-    score+"%";
-
-  $("metricScore").textContent=
-    score;
-
-
-  let advice="";
-
-
-  if(score<40){
-
-    advice=
-      "System unstable. Rebuild clarity and simplify.";
-
-  }else if(score<60){
-
-    advice=
-      "System functional but inconsistent. Attack one bottleneck.";
-
-  }else if(score<80){
-
-    advice=
-      "Good operating condition. Increase consistency and leverage.";
-
-  }else{
-
-    advice=
-      "Strong system. Focus on compounding and asymmetric opportunities.";
-
-  }
-
-
-  $("scoreAdvice").textContent=
-    advice;
-
-
-  return score;
-
-}
-
-
-/* =========================================================
-   BOTTLENECK
-========================================================= */
-
-function calculateBottleneck(){
-
-  const names=[
-    "Identity",
-    "Clarity",
-    "State",
-    "Attention",
-    "Action",
-    "Evidence",
-    "Persistence"
-  ];
-
-
-  const values=
-    [...document.querySelectorAll(".scoreInput")]
-      .map(x=>Number(x.value)||0);
-
-
-  let lowest=0;
-
-
-  values.forEach((value,index)=>{
-
-    if(value<values[lowest])
-      lowest=index;
-
-  });
-
-
-  $("bottleneck").textContent=
-    names[lowest];
-
-
-  const advice={
-    Identity:"Clarify the person and standards required.",
-    Clarity:"Reduce the objective to one measurable target.",
-    State:"Create conditions that support consistent execution.",
-    Attention:"Remove distractions and improve signal detection.",
-    Action:"Increase execution frequency.",
-    Evidence:"Measure results more rigorously.",
-    Persistence:"Build systems that make consistency easier."
+  /* =====================================================
+     MANIFESTATION OS
+     Core State
+  ===================================================== */
+
+  const STORAGE_KEY = "manifestationOS_v2";
+
+  const defaultState = {
+    goal: "",
+    why: "",
+    desiredState: "",
+    successMetric: "",
+    currentValue: 0,
+    targetValue: 100,
+    deadline: "",
+
+    identity: "",
+    standards: "",
+    assumptions: "",
+    identityDesiredState: "",
+
+    strategy: "",
+    constraint: "",
+    leverage: "",
+    resource: "",
+
+    dailyAction: "",
+    ifThen: "",
+
+    actions: [],
+    evidence: [],
+    assumptionsLog: [],
+    experiments: [],
+
+    expected: "",
+    observed: "",
+    gap: "",
+    lesson: "",
+
+    morningIdentity: "",
+    endStateScene: "",
+    eveningEvidence: "",
+    revision: "",
+    weeklySynthesis: "",
+
+    completedToday: false,
+    onboardingComplete: false
   };
 
 
-  $("bottleneckText").textContent=
-    `${values[lowest]}/10 — ${advice[names[lowest]]}`;
-
-}
-
-
-/* =========================================================
-   LEVERAGE ENGINE
-========================================================= */
-
-function calculateLeverage(
-  impact,
-  probability,
-  leverage,
-  effort
-){
-
-  effort=
-    Math.max(1,effort);
-
-  return (
-    impact*
-    probability*
-    leverage
-  )/effort;
-
-}
-
-
-function addAction(){
-
-  const name=
-    $("actionInput")
-      .value
-      .trim();
-
-
-  if(!name){
-
-    toast("Enter an action.");
-
-    return;
-
-  }
-
-
-  const impact=
-    clamp(
-      Number($("actionImpact").value)||0,
-      0,
-      10
-    );
-
-  const probability=
-    clamp(
-      Number($("actionProbability").value)||0,
-      0,
-      10
-    );
-
-  const leverage=
-    clamp(
-      Number($("actionLeverage").value)||0,
-      0,
-      10
-    );
-
-  const effort=
-    clamp(
-      Number($("actionEffort").value)||1,
-      1,
-      10
-    );
-
-
-  const score=
-    calculateLeverage(
-      impact,
-      probability,
-      leverage,
-      effort
-    );
-
-
-  state.actions.push({
-
-    id:Date.now(),
-
-    name,
-
-    impact,
-
-    probability,
-
-    leverage,
-
-    effort,
-
-    score
-
-  });
-
-
-  $("actionInput").value="";
-
-
-  saveRaw();
-
-  renderActions();
-
-  generateRecommendation();
-
-  toast("Candidate action added.");
-
-}
-
-
-function removeAction(id){
-
-  state.actions=
-    state.actions.filter(
-      x=>x.id!==id
-    );
-
-  saveRaw();
-
-  renderActions();
-
-  generateRecommendation();
-
-}
-
-
-function renderActions(){
-
-  const list=
-    $("actionList");
-
-  list.innerHTML="";
-
-
-  const actions=
-    state.actions
-      .slice()
-      .sort(
-        (a,b)=>b.score-a.score
-      );
-
-
-  if(!actions.length){
-
-    list.innerHTML=
-      `<p class="muted">
-        Add candidate actions to calculate leverage.
-      </p>`;
-
-    return;
-
-  }
-
-
-  actions.forEach((action,index)=>{
-
-    const level=
-      action.score>=150
-        ?"high"
-        :action.score>=70
-          ?"medium"
-          :"low";
-
-
-    const el=
-      document.createElement("div");
-
-    el.className="list-item";
-
-
-    el.innerHTML=`
-
-      <div>
-
-        <span class="badge ${level}">
-          #${index+1}
-        </span>
-
-        <strong>
-          ${escapeHTML(action.name)}
-        </strong>
-
-        <div
-          class="muted"
-          style="margin-top:6px;"
-        >
-          Impact ${action.impact}
-          · Probability ${action.probability}
-          · Leverage ${action.leverage}
-          · Effort ${action.effort}
-        </div>
-
-      </div>
-
-      <div style="text-align:right;">
-
-        <div class="leverage-score"
-             style="font-size:1.6rem;">
-          ${Math.round(action.score)}
-        </div>
-
-        <button
-          onclick="removeAction(${action.id})"
-        >
-          ×
-        </button>
-
-      </div>
-
-    `;
-
-    list.appendChild(el);
-
-  });
-
-}
-
-
-/* =========================================================
-   RECOMMENDATION ENGINE
-========================================================= */
-
-function generateRecommendation(){
-
-  let recommendation=null;
-
-
-  if(state.actions.length){
-
-    recommendation=
-      state.actions
-        .slice()
-        .sort(
-          (a,b)=>b.score-a.score
-        )[0];
-
-  }else{
-
-    const action=
-      state.dailyAction ||
-      "Define one small action that directly advances your objective.";
-
-
-    recommendation={
-      name:action,
-      score:0
-    };
-
-  }
-
-
-  state.recommendation=
-    recommendation;
-
-
-  $("commandAction").textContent=
-    recommendation.name;
-
-
-  $("commandScore").textContent=
-    `Score: ${Math.round(recommendation.score||0)}`;
-
-
-  $("metricLeverage").textContent=
-    Math.round(recommendation.score||0);
-
-
-  return recommendation;
-
-}
-
-
-/* =========================================================
-   EXECUTE RECOMMENDATION
-========================================================= */
-
-function executeRecommendation(){
-
-  const recommendation=
-    state.recommendation ||
-    generateRecommendation();
-
-
-  $("dailyActionInput").value=
-    recommendation.name;
-
-
-  collect();
-
-  saveRaw();
-
-  document
-    .getElementById("execution")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-
-  toast("Recommendation moved to execution.");
-
-}
-
-
-/* =========================================================
-   COMPLETE ACTION
-========================================================= */
-
-function completeAction(){
-
-  const action=
-    $("dailyActionInput")
-      .value
-      .trim();
-
-
-  if(!action){
-
-    toast("Define today's action first.");
-
-    return;
-
-  }
-
-
-  const date=
-    today();
-
-
-  if(state.lastActionDate!==date){
-
-    state.actionsCompleted++;
-
-
-    const previous=
-      new Date(
-        Date.now()-86400000
-      )
-      .toISOString()
-      .slice(0,10);
-
-
-    if(state.lastActionDate===previous){
-
-      state.streak++;
-
-    }else{
-
-      state.streak=1;
+  let state = loadState();
+
+
+  /* =====================================================
+     INITIALIZATION
+  ===================================================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      populateFields();
+      renderEverything();
+      updateDashboard();
+
+      if (!state.onboardingComplete) {
+        setTimeout(
+          () => startOnboarding(),
+          700
+        );
+      }
 
     }
-
-
-    state.lastActionDate=
-      date;
-
-  }
-
-
-  collect();
-
-  saveRaw();
-
-  update();
-
-  toast("Execution recorded.");
-
-}
-
-
-/* =========================================================
-   EVIDENCE
-========================================================= */
-
-function addEvidence(){
-
-  const text=
-    $("evidenceInput")
-      .value
-      .trim();
-
-
-  if(!text){
-
-    toast("Enter evidence first.");
-
-    return;
-
-  }
-
-
-  state.evidence.push({
-
-    id:Date.now(),
-
-    text,
-
-    category:
-      $("evidenceCategory").value,
-
-    impact:
-      Number(
-        $("evidenceImpact").value
-      ),
-
-    date:
-      new Date().toISOString()
-
-  });
-
-
-  $("evidenceInput").value="";
-
-
-  saveRaw();
-
-  renderEvidence();
-
-  update();
-
-  toast("Evidence recorded.");
-
-}
-
-
-function removeEvidence(id){
-
-  state.evidence=
-    state.evidence.filter(
-      x=>x.id!==id
-    );
-
-  saveRaw();
-
-  renderEvidence();
-
-  update();
-
-}
-
-
-function renderEvidence(){
-
-  const list=
-    $("evidenceList");
-
-  list.innerHTML="";
-
-
-  if(!state.evidence.length){
-
-    list.innerHTML=
-      `<p class="muted">
-        No evidence recorded yet.
-      </p>`;
-
-    return;
-
-  }
-
-
-  state.evidence
-    .slice()
-    .reverse()
-    .forEach(item=>{
-
-      const el=
-        document.createElement("div");
-
-      el.className="list-item";
-
-
-      el.innerHTML=`
-
-        <div>
-
-          <span class="badge hypothesis">
-            ${escapeHTML(item.category)}
-          </span>
-
-          <strong>
-            ${escapeHTML(item.text)}
-          </strong>
-
-          <div class="muted"
-               style="margin-top:5px;">
-            Impact ${item.impact}/5
-          </div>
-
-        </div>
-
-        <button
-          onclick="removeEvidence(${item.id})"
-        >
-          ×
-        </button>
-
-      `;
-
-
-      list.appendChild(el);
-
-    });
-
-}
-
-
-/* =========================================================
-   ASSUMPTIONS
-========================================================= */
-
-function addAssumption(){
-
-  const text=
-    $("assumptionInput")
-      .value
-      .trim();
-
-
-  if(!text){
-
-    toast("Enter an assumption.");
-
-    return;
-
-  }
-
-
-  state.assumptionsLog.push({
-
-    id:Date.now(),
-
-    text,
-
-    type:
-      $("assumptionType").value,
-
-    test:
-      $("assumptionTest").value
-
-  });
-
-
-  $("assumptionInput").value="";
-  $("assumptionTest").value="";
-
-
-  saveRaw();
-
-  renderAssumptions();
-
-  toast("Assumption recorded.");
-
-}
-
-
-function removeAssumption(id){
-
-  state.assumptionsLog=
-    state.assumptionsLog
-      .filter(x=>x.id!==id);
-
-  saveRaw();
-
-  renderAssumptions();
-
-}
-
-
-function renderAssumptions(){
-
-  const list=
-    $("assumptionList");
-
-  list.innerHTML="";
-
-
-  state.assumptionsLog
-    .slice()
-    .reverse()
-    .forEach(item=>{
-
-      const el=
-        document.createElement("div");
-
-      el.className="list-item";
-
-
-      const typeClass=
-        item.type.toLowerCase();
-
-
-      el.innerHTML=`
-
-        <div>
-
-          <span class="badge ${typeClass}">
-            ${item.type}
-          </span>
-
-          <strong>
-            ${escapeHTML(item.text)}
-          </strong>
-
-          <div class="muted"
-               style="margin-top:6px;">
-            Test: ${escapeHTML(item.test)}
-          </div>
-
-        </div>
-
-        <button
-          onclick="removeAssumption(${item.id})"
-        >
-          ×
-        </button>
-
-      `;
-
-
-      list.appendChild(el);
-
-    });
-
-}
-
-
-/* =========================================================
-   EXPERIMENTS
-========================================================= */
-
-function addExperiment(){
-
-  const hypothesis=
-    $("experimentHypothesis")
-      .value
-      .trim();
-
-
-  if(!hypothesis){
-
-    toast("Define a hypothesis.");
-
-    return;
-
-  }
-
-
-  state.experiments.push({
-
-    id:Date.now(),
-
-    hypothesis,
-
-    action:
-      $("experimentAction").value,
-
-    prediction:
-      $("experimentPrediction").value,
-
-    result:
-      $("experimentResult").value,
-
-    date:
-      new Date().toISOString()
-
-  });
-
-
-  $("experimentHypothesis").value="";
-  $("experimentAction").value="";
-  $("experimentPrediction").value="";
-  $("experimentResult").value="";
-
-
-  saveRaw();
-
-  renderExperiments();
-
-  update();
-
-  toast("Experiment recorded.");
-
-}
-
-
-function renderExperiments(){
-
-  const list=
-    $("experimentList");
-
-  list.innerHTML="";
-
-
-  if(!state.experiments.length){
-
-    list.innerHTML=
-      `<p class="muted">
-        No experiments recorded.
-      </p>`;
-
-    return;
-
-  }
-
-
-  state.experiments
-    .slice()
-    .reverse()
-    .forEach(item=>{
-
-      const el=
-        document.createElement("div");
-
-      el.className="list-item";
-
-      el.style.display="block";
-
-
-      el.innerHTML=`
-
-        <strong>
-          ${escapeHTML(item.hypothesis)}
-        </strong>
-
-        <p class="muted"
-           style="margin-top:7px;">
-          Action:
-          ${escapeHTML(item.action)}
-        </p>
-
-        <p class="muted">
-          Prediction:
-          ${escapeHTML(item.prediction)}
-        </p>
-
-        <p style="margin-top:7px;">
-          Result:
-          ${escapeHTML(item.result)}
-        </p>
-
-      `;
-
-
-      list.appendChild(el);
-
-    });
-
-}
-
-
-/* =========================================================
-   IDENTITY → BEHAVIOR
-========================================================= */
-
-function generateIdentityBehavior(){
-
-  const identity=
-    $("identityInput")
-      .value
-      .trim();
-
-
-  const output=
-    $("identityBehavior");
-
-
-  if(!identity){
-
-    output.textContent=
-      "Define the identity first.";
-
-    output.classList.remove("hidden");
-
-    return;
-
-  }
-
-
-  output.innerHTML=
-    `
-    If I truly operated as:
-    <strong>${escapeHTML(identity)}</strong>,
-    then today I would choose the behavior that most clearly
-    demonstrates that identity.
-    `;
-
-
-  output.classList.remove("hidden");
-
-}
-
-
-/* =========================================================
-   AFFIRMATION
-========================================================= */
-
-function generateAffirmation(){
-
-  const identity=
-    state.identity ||
-    $("identityInput").value;
-
-
-  const goal=
-    state.goal ||
-    $("goalInput").value;
-
-
-  let text;
-
-
-  if(identity){
-
-    text=
-      `I AM ${identity.replace(
-        /^i am\s*/i,
-        ""
-      )}. I prove it through my actions.`;
-
-  }else if(goal){
-
-    text=
-      `I AM becoming the person capable of creating ${goal}.`;
-
-  }else{
-
-    text=
-      "I AM responsible for my attention, choices, actions and adaptation.";
-
-  }
-
-
-  const output=
-    $("affirmationOutput");
-
-
-  output.textContent=text;
-
-  output.classList.remove("hidden");
-
-}
-
-
-/* =========================================================
-   NEXT EXPERIMENT
-========================================================= */
-
-function generateNextExperiment(){
-
-  const output=
-    $("nextExperimentOutput");
-
-
-  let lesson=
-    state.lesson ||
-    $("lessonInput").value;
-
-
-  let bottleneck=
-    $("bottleneck").textContent;
-
-
-  let action=
-    state.recommendation?.name ||
-    state.dailyAction;
-
-
-  if(!lesson){
-
-    lesson=
-      "The current strategy has not yet generated enough information.";
-
-  }
-
-
-  output.innerHTML=`
-
-    <strong>Next experiment:</strong><br><br>
-
-    Test whether improving
-    <strong>${escapeHTML(bottleneck)}</strong>
-    changes the outcome.<br><br>
-
-    Current candidate action:
-    <strong>${escapeHTML(action)}</strong><br><br>
-
-    Previous lesson:
-    ${escapeHTML(lesson)}
-
-  `;
-
-
-  output.classList.remove("hidden");
-
-}
-
-
-/* =========================================================
-   RAW SAVE
-========================================================= */
-
-function saveRaw(){
-
-  localStorage.setItem(
-    KEY,
-    JSON.stringify(state)
   );
 
-}
 
+  /* =====================================================
+     STORAGE
+  ===================================================== */
 
-/* =========================================================
-   UPDATE
-========================================================= */
+  function loadState() {
 
-function update(){
+    try {
 
-  calculateScore();
+      const stored =
+        localStorage.getItem(STORAGE_KEY);
 
-  calculateBottleneck();
-
-  calculateProgress();
-
-  renderActions();
-
-  renderEvidence();
-
-  renderAssumptions();
-
-  renderExperiments();
-
-  generateRecommendation();
-
-
-  $("metricEvidence").textContent=
-    state.evidence.length;
-
-
-  $("metricActions").textContent=
-    state.actionsCompleted;
-
-
-  $("metricExperiments").textContent=
-    state.experiments.length;
-
-
-  $("metricStreak").textContent=
-    state.streak;
-
-}
-
-
-/* =========================================================
-   EXPORT
-========================================================= */
-
-function exportData(){
-
-  collect();
-
-
-  const blob=
-    new Blob(
-      [
-        JSON.stringify(
-          state,
-          null,
-          2
-        )
-      ],
-      {
-        type:"application/json"
+      if (!stored) {
+        return structuredClone(defaultState);
       }
-    );
 
-
-  const url=
-    URL.createObjectURL(blob);
-
-
-  const link=
-    document.createElement("a");
-
-
-  link.href=url;
-
-  link.download=
-    "manifestation-os-v2-backup.json";
-
-  link.click();
-
-
-  URL.revokeObjectURL(url);
-
-  toast("Backup exported.");
-
-}
-
-
-/* =========================================================
-   IMPORT
-========================================================= */
-
-function importData(event){
-
-  const file=
-    event.target.files[0];
-
-
-  if(!file)
-    return;
-
-
-  const reader=
-    new FileReader();
-
-
-  reader.onload=e=>{
-
-    try{
-
-      const imported=
-        JSON.parse(
-          e.target.result
-        );
-
-
-      state={
-        ...state,
-        ...imported,
-
-        journal:{
-          ...state.journal,
-          ...(imported.journal||{})
-        }
-
+      return {
+        ...structuredClone(defaultState),
+        ...JSON.parse(stored)
       };
 
-
-      saveRaw();
-
-      populate();
-
-      update();
-
-      toast("Backup imported.");
-
-    }catch(error){
+    } catch (error) {
 
       console.error(error);
 
-      toast("Invalid backup.");
-
+      return structuredClone(defaultState);
     }
-
-  };
-
-
-  reader.readAsText(file);
-
-}
+  }
 
 
-/* =========================================================
-   RESET
-========================================================= */
+  function saveState(showMessage = true) {
 
-function resetSystem(){
+    collectFields();
 
-  if(
-    !confirm(
-      "Erase the entire Manifestation OS database?"
-    )
-  )
-    return;
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(state)
+    );
 
+    renderEverything();
+    updateDashboard();
 
-  localStorage.removeItem(KEY);
-
-  location.reload();
-
-}
+    if (showMessage) {
+      toast("System state saved.");
+    }
+  }
 
 
-/* =========================================================
-   AUTO-SAVE SCORES
-========================================================= */
+  function collectFields() {
 
-document
-  .querySelectorAll(".scoreInput")
-  .forEach(input=>{
+    const fields = {
 
-    input.addEventListener(
-      "input",
-      ()=>{
+      goal: "goalInput",
+      why: "whyInput",
+      desiredState: "desiredStateInput",
+      successMetric: "successMetricInput",
+      currentValue: "currentValueInput",
+      targetValue: "targetValueInput",
+      deadline: "deadlineInput",
 
-        collect();
+      identity: "identityInput",
+      standards: "standardsInput",
+      assumptions: "assumptionsInput",
+      identityDesiredState:
+        "identityDesiredStateInput",
 
-        calculateScore();
+      strategy: "strategyInput",
+      constraint: "constraintInput",
+      leverage: "leverageInput",
+      resource: "resourceInput",
 
-        calculateBottleneck();
+      dailyAction: "dailyActionInput",
+      ifThen: "ifThenInput",
 
-        saveRaw();
+      expected: "expectedInput",
+      observed: "observedInput",
+      gap: "gapInput",
+      lesson: "lessonInput",
+
+      morningIdentity: "morningIdentity",
+      endStateScene: "endStateScene",
+      eveningEvidence: "eveningEvidence",
+      revision: "revisionInput",
+      weeklySynthesis: "weeklySynthesis"
+    };
+
+
+    Object.entries(fields).forEach(
+      ([key, id]) => {
+
+        const element =
+          document.getElementById(id);
+
+        if (!element) return;
+
+        state[key] = element.value;
 
       }
     );
 
-  });
+
+    state.currentValue =
+      Number(state.currentValue) || 0;
+
+    state.targetValue =
+      Number(state.targetValue) || 0;
+  }
 
 
-/* =========================================================
-   KEYBOARD
-========================================================= */
+  function populateFields() {
 
-document.addEventListener(
-  "keydown",
-  event=>{
+    const fields = {
 
-    if(
-      (event.ctrlKey||event.metaKey)&&
-      event.key.toLowerCase()==="s"
-    ){
+      goal: "goalInput",
+      why: "whyInput",
+      desiredState: "desiredStateInput",
+      successMetric: "successMetricInput",
+      currentValue: "currentValueInput",
+      targetValue: "targetValueInput",
+      deadline: "deadlineInput",
 
-      event.preventDefault();
+      identity: "identityInput",
+      standards: "standardsInput",
+      assumptions: "assumptionsInput",
+      identityDesiredState:
+        "identityDesiredStateInput",
 
-      saveState();
+      strategy: "strategyInput",
+      constraint: "constraintInput",
+      leverage: "leverageInput",
+      resource: "resourceInput",
+
+      dailyAction: "dailyActionInput",
+      ifThen: "ifThenInput",
+
+      expected: "expectedInput",
+      observed: "observedInput",
+      gap: "gapInput",
+      lesson: "lessonInput",
+
+      morningIdentity: "morningIdentity",
+      endStateScene: "endStateScene",
+      eveningEvidence: "eveningEvidence",
+      revision: "revisionInput",
+      weeklySynthesis: "weeklySynthesis"
+    };
+
+
+    Object.entries(fields).forEach(
+      ([key, id]) => {
+
+        const element =
+          document.getElementById(id);
+
+        if (!element) return;
+
+        element.value =
+          state[key] ?? "";
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     ONBOARDING
+  ===================================================== */
+
+  let onboardingStep = 1;
+
+
+  function startOnboarding() {
+
+    onboardingStep = 1;
+
+    document
+      .getElementById("onboardingOverlay")
+      .classList
+      .add("active");
+
+    showOnboardingStep(1);
+  }
+
+
+  function showOnboardingStep(step) {
+
+    document
+      .querySelectorAll(".onboarding-step")
+      .forEach(
+        element =>
+          element.classList.remove("active")
+      );
+
+    const current =
+      document.querySelector(
+        `.onboarding-step[data-step="${step}"]`
+      );
+
+    if (current) {
+      current.classList.add("active");
+    }
+  }
+
+
+  function nextOnboardingStep() {
+
+    if (onboardingStep === 1) {
+
+      const identity =
+        document.getElementById(
+          "onboardingIdentity"
+        ).value.trim();
+
+      if (!identity) {
+
+        toast(
+          "Define an identity before continuing."
+        );
+
+        return;
+      }
+
+      document.getElementById(
+        "identityInput"
+      ).value = identity;
+    }
+
+
+    if (onboardingStep < 3) {
+
+      onboardingStep++;
+
+      showOnboardingStep(
+        onboardingStep
+      );
+
+    }
+  }
+
+
+  function previousOnboardingStep() {
+
+    if (onboardingStep > 1) {
+
+      onboardingStep--;
+
+      showOnboardingStep(
+        onboardingStep
+      );
+
+    }
+  }
+
+
+  function toggleChoice(element) {
+
+    element.classList.toggle(
+      "selected"
+    );
+  }
+
+
+  function finishOnboarding() {
+
+    collectFields();
+
+    state.onboardingComplete = true;
+
+    saveState(false);
+
+    document
+      .getElementById("onboardingOverlay")
+      .classList
+      .remove("active");
+
+    toast(
+      "Manifestation OS initialized."
+    );
+
+    document
+      .getElementById("command")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+  }
+
+
+  /* =====================================================
+     PROGRESS
+  ===================================================== */
+
+  function calculateProgress() {
+
+    collectFields();
+
+    const current =
+      Number(state.currentValue) || 0;
+
+    const target =
+      Number(state.targetValue) || 0;
+
+    let progress = 0;
+
+    if (target > 0) {
+
+      progress =
+        (current / target) * 100;
 
     }
 
+    progress =
+      Math.max(
+        0,
+        Math.min(100, progress)
+      );
+
+    document.getElementById(
+      "progressBar"
+    ).style.width =
+      `${progress}%`;
+
+    document.getElementById(
+      "trajectoryMetric"
+    ).textContent =
+      `${Math.round(progress)}%`;
+
+    toast(
+      `Trajectory calculated: ${Math.round(progress)}%`
+    );
+
+    saveState(false);
   }
-);
 
 
-/* =========================================================
-   INIT
-========================================================= */
+  /* =====================================================
+     COMMAND SCORE
+  ===================================================== */
 
-load();
+  function calculateCommandScore() {
+
+    let score = 0;
+
+    if (state.goal) score += 15;
+
+    if (state.identity) score += 15;
+
+    if (state.strategy) score += 10;
+
+    if (state.dailyAction) score += 15;
+
+    if (state.evidence.length) score += 15;
+
+    if (state.experiments.length) score += 10;
+
+    if (state.completedToday) score += 20;
+
+    return Math.min(100, score);
+  }
+
+
+  function updateDashboard() {
+
+    const score =
+      calculateCommandScore();
+
+    document.getElementById(
+      "commandScore"
+    ).innerHTML = `
+      <span class="score-dot"></span>
+      Score: ${score}
+    `;
+
+
+    document.getElementById(
+      "identityDisplay"
+    ).textContent =
+      state.identity ||
+      "Define who you are becoming.";
+
+
+    document.getElementById(
+      "evidenceMetric"
+    ).textContent =
+      state.evidence.length;
+
+
+    document.getElementById(
+      "actionMetric"
+    ).textContent =
+      state.actions.length;
+
+
+    document.getElementById(
+      "experimentMetric"
+    ).textContent =
+      state.experiments.length;
+
+
+    const current =
+      Number(state.currentValue) || 0;
+
+    const target =
+      Number(state.targetValue) || 0;
+
+    let progress = 0;
+
+    if (target > 0) {
+
+      progress =
+        Math.max(
+          0,
+          Math.min(
+            100,
+            (current / target) * 100
+          )
+        );
+
+    }
+
+    document.getElementById(
+      "trajectoryMetric"
+    ).textContent =
+      `${Math.round(progress)}%`;
+
+    document.getElementById(
+      "progressBar"
+    ).style.width =
+      `${progress}%`;
+  }
+
+
+  /* =====================================================
+     RECOMMENDATION ENGINE
+  ===================================================== */
+
+  function generateRecommendation() {
+
+    collectFields();
+
+    let recommendation =
+      "Define an objective and identity first.";
+
+
+    if (!state.goal) {
+
+      recommendation =
+        "Define the primary objective. Turn desire into an observable destination.";
+
+    } else if (!state.identity) {
+
+      recommendation =
+        "Define the identity required to consistently produce the desired outcome.";
+
+    } else if (!state.strategy) {
+
+      recommendation =
+        "Design the strategy. Identify the highest-leverage path between your current state and target.";
+
+    } else if (!state.dailyAction) {
+
+      recommendation =
+        "Choose one action for today that materially changes the trajectory.";
+
+    } else if (!state.evidence.length) {
+
+      recommendation =
+        "Execute the daily action and record observable evidence.";
+
+    } else if (!state.experiments.length) {
+
+      recommendation =
+        "Turn one important assumption into an experiment.";
+
+    } else {
+
+      recommendation =
+        "Review the evidence, identify the bottleneck, and run the next highest-leverage experiment.";
+
+    }
+
+
+    document.getElementById(
+      "recommendation"
+    ).textContent =
+      recommendation;
+
+    toast("Recommendation recalculated.");
+  }
+
+
+  function executeRecommendation() {
+
+    generateRecommendation();
+
+    const action =
+      state.dailyAction;
+
+    if (action) {
+
+      document
+        .getElementById("execution")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+      toast(
+        `Execute now: ${action}`
+      );
+
+    } else {
+
+      document
+        .getElementById("execution")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+  }
+
+
+  /* =====================================================
+     IDENTITY ENGINE
+  ===================================================== */
+
+  function generateIdentityBehavior() {
+
+    collectFields();
+
+    if (!state.identity) {
+
+      toast(
+        "Define your identity first."
+      );
+
+      return;
+    }
+
+
+    const text =
+      `
+      If "${state.identity}" is true,
+      then your behavior should reflect that identity.
+
+      Standards:
+      • Do what you said you would do.
+      • Protect your attention.
+      • Choose long-term leverage over short-term comfort.
+      • Make decisions consistent with the desired identity.
+      • Collect evidence through action.
+
+      Daily question:
+      "What would this version of me do next?"
+      `;
+
+
+    document.getElementById(
+      "identityBehavior"
+    ).textContent =
+      text.trim();
+
+    toast(
+      "Identity behavior generated."
+    );
+  }
+
+
+  function generateAffirmation() {
+
+    collectFields();
+
+    const identity =
+      state.identity ||
+      "I am becoming the person capable of creating my desired reality.";
+
+
+    const affirmation =
+      `I AM ${identity.replace(/^I am/i, "").trim()}. I think, choose and act from this identity now.`;
+
+    document.getElementById(
+      "morningIdentity"
+    ).value =
+      affirmation;
+
+    toast(
+      "I AM statement generated."
+    );
+  }
+
+
+  /* =====================================================
+     ACTIONS
+  ===================================================== */
+
+  function addAction() {
+
+    const action =
+      document.getElementById(
+        "actionInput"
+      ).value.trim();
+
+    if (!action) {
+
+      toast(
+        "Enter an action first."
+      );
+
+      return;
+    }
+
+
+    const impact =
+      Number(
+        document.getElementById(
+          "actionImpact"
+        ).value
+      ) || 0;
+
+
+    const probability =
+      Number(
+        document.getElementById(
+          "actionProbability"
+        ).value
+      ) || 0;
+
+
+    const leverage =
+      Number(
+        document.getElementById(
+          "actionLeverage"
+        ).value
+      ) || 0;
+
+
+    const effort =
+      Number(
+        document.getElementById(
+          "actionEffort"
+        ).value
+      ) || 1;
+
+
+    const score =
+      (
+        impact *
+        probability *
+        leverage
+      ) / effort;
+
+
+    state.actions.push({
+
+      id: Date.now(),
+
+      text: action,
+
+      impact,
+      probability,
+      leverage,
+      effort,
+
+      score,
+
+      completed: false,
+
+      created:
+        new Date().toISOString()
+
+    });
+
+
+    document.getElementById(
+      "actionInput"
+    ).value = "";
+
+
+    saveState(false);
+
+    renderActions();
+
+    toast(
+      "Candidate action added."
+    );
+  }
+
+
+  function renderActions() {
+
+    const container =
+      document.getElementById(
+        "actionList"
+      );
+
+
+    if (!state.actions.length) {
+
+      container.innerHTML =
+        `<p class="muted">
+          No candidate actions yet.
+        </p>`;
+
+      return;
+    }
+
+
+    const sorted =
+      [...state.actions]
+        .sort(
+          (a,b) =>
+            b.score - a.score
+        );
+
+
+    container.innerHTML =
+      sorted.map(
+        action => `
+
+          <div
+            class="action-item
+            ${action.completed ? "completed" : ""}"
+          >
+
+            <div>
+
+              <div class="action-title">
+                ${escapeHTML(action.text)}
+              </div>
+
+              <div class="action-meta">
+                Leverage score:
+                ${Math.round(action.score)}
+              </div>
+
+            </div>
+
+            <button
+              class="button"
+              onclick="completeCandidateAction(${action.id})"
+            >
+              ${action.completed ? "Done" : "Complete"}
+            </button>
+
+          </div>
+
+        `
+      ).join("");
+  }
+
+
+  function completeCandidateAction(id) {
+
+    const action =
+      state.actions.find(
+        item => item.id === id
+      );
+
+    if (!action) return;
+
+    action.completed =
+      !action.completed;
+
+    saveState(false);
+
+    renderActions();
+
+    updateDashboard();
+
+    toast(
+      action.completed
+        ? "Action completed."
+        : "Action reopened."
+    );
+  }
+
+
+  function completeAction() {
+
+    collectFields();
+
+    if (!state.dailyAction) {
+
+      toast(
+        "Define today's action first."
+      );
+
+      return;
+    }
+
+    state.completedToday = true;
+
+    saveState(false);
+
+    toast(
+      "Today's action marked complete."
+    );
+  }
+
+
+  /* =====================================================
+     EVIDENCE
+  ===================================================== */
+
+  function addEvidence() {
+
+    const text =
+      document.getElementById(
+        "evidenceInput"
+      ).value.trim();
+
+    if (!text) {
+
+      toast(
+        "Enter evidence first."
+      );
+
+      return;
+    }
+
+
+    const category =
+      document.getElementById(
+        "evidenceCategory"
+      ).value;
+
+
+    const impact =
+      Number(
+        document.getElementById(
+          "evidenceImpact"
+        ).value
+      );
+
+
+    state.evidence.push({
+
+      id: Date.now(),
+
+      text,
+
+      category,
+
+      impact,
+
+      created:
+        new Date().toISOString()
+
+    });
+
+
+    document.getElementById(
+      "evidenceInput"
+    ).value = "";
+
+
+    saveState(false);
+
+    renderEvidence();
+
+    toast(
+      "Evidence recorded."
+    );
+  }
+
+
+  function renderEvidence() {
+
+    const container =
+      document.getElementById(
+        "evidenceList"
+      );
+
+
+    if (!state.evidence.length) {
+
+      container.innerHTML =
+        `<p class="muted">
+          No evidence recorded yet.
+        </p>`;
+
+      return;
+    }
+
+
+    container.innerHTML =
+      state.evidence
+        .slice()
+        .reverse()
+        .map(
+          item => `
+
+            <div class="action-item">
+
+              <div>
+
+                <div class="action-title">
+                  ${escapeHTML(item.text)}
+                </div>
+
+                <div class="action-meta">
+                  ${escapeHTML(item.category)}
+                  · Impact ${item.impact}/5
+                </div>
+
+              </div>
+
+            </div>
+
+          `
+        ).join("");
+  }
+
+
+  /* =====================================================
+     ASSUMPTIONS
+  ===================================================== */
+
+  function addAssumption() {
+
+    const assumption =
+      document.getElementById(
+        "assumptionInput"
+      ).value.trim();
+
+
+    if (!assumption) {
+
+      toast(
+        "Enter an assumption first."
+      );
+
+      return;
+    }
+
+
+    state.assumptionsLog.push({
+
+      id: Date.now(),
+
+      assumption,
+
+      classification:
+        document.getElementById(
+          "assumptionClassification"
+        ).value,
+
+      test:
+        document.getElementById(
+          "assumptionTest"
+        ).value,
+
+      created:
+        new Date().toISOString()
+
+    });
+
+
+    document.getElementById(
+      "assumptionInput"
+    ).value = "";
+
+
+    saveState(false);
+
+    toast(
+      "Assumption added."
+    );
+  }
+
+
+  /* =====================================================
+     EXPERIMENTS
+  ===================================================== */
+
+  function addExperiment() {
+
+    const hypothesis =
+      document.getElementById(
+        "experimentHypothesis"
+      ).value.trim();
+
+
+    if (!hypothesis) {
+
+      toast(
+        "Define a hypothesis first."
+      );
+
+      return;
+    }
+
+
+    state.experiments.push({
+
+      id: Date.now(),
+
+      hypothesis,
+
+      action:
+        document.getElementById(
+          "experimentAction"
+        ).value,
+
+      prediction:
+        document.getElementById(
+          "experimentPrediction"
+        ).value,
+
+      result:
+        document.getElementById(
+          "experimentResult"
+        ).value,
+
+      created:
+        new Date().toISOString()
+
+    });
+
+
+    saveState(false);
+
+    renderExperiments();
+
+    toast(
+      "Experiment recorded."
+    );
+  }
+
+
+  function renderExperiments() {
+
+    const container =
+      document.getElementById(
+        "experimentList"
+      );
+
+
+    if (!state.experiments.length) {
+
+      container.innerHTML =
+        `<p class="muted">
+          No experiments recorded yet.
+        </p>`;
+
+      return;
+    }
+
+
+    container.innerHTML =
+      state.experiments
+        .slice()
+        .reverse()
+        .map(
+          experiment => `
+
+            <div class="action-item">
+
+              <div>
+
+                <div class="action-title">
+                  ${escapeHTML(
+                    experiment.hypothesis
+                  )}
+                </div>
+
+                <div class="action-meta">
+                  Prediction:
+                  ${escapeHTML(
+                    experiment.prediction || "—"
+                  )}
+                </div>
+
+                <div class="action-meta">
+                  Result:
+                  ${escapeHTML(
+                    experiment.result || "Pending"
+                  )}
+                </div>
+
+              </div>
+
+            </div>
+
+          `
+        ).join("");
+  }
+
+
+  function generateNextExperiment() {
+
+    collectFields();
+
+    let hypothesis;
+
+    if (state.goal) {
+
+      hypothesis =
+        `If I increase focused action toward "${state.goal}", then measurable progress should increase.`;
+
+    } else {
+
+      hypothesis =
+        "If I consistently act from my chosen identity, then observable evidence of alignment should increase.";
+
+    }
+
+
+    document.getElementById(
+      "experimentHypothesis"
+    ).value =
+      hypothesis;
+
+
+    document.getElementById(
+      "experimentAction"
+    ).value =
+      state.dailyAction ||
+      "Perform one high-leverage action.";
+
+
+    document.getElementById(
+      "experimentPrediction"
+    ).value =
+      "Observable progress, evidence or learning will increase.";
+
+
+    document
+      .getElementById("experiments")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+
+    toast(
+      "Next experiment generated."
+    );
+  }
+
+
+  /* =====================================================
+     RENDER
+  ===================================================== */
+
+  function renderEverything() {
+
+    renderActions();
+
+    renderEvidence();
+
+    renderExperiments();
+
+    updateDashboard();
+
+  }
+
+
+  /* =====================================================
+     EXPORT
+  ===================================================== */
+
+  function exportData() {
+
+    collectFields();
+
+    const blob =
+      new Blob(
+        [
+          JSON.stringify(
+            state,
+            null,
+            2
+          )
+        ],
+        {
+          type:
+            "application/json"
+        }
+      );
+
+
+    const url =
+      URL.createObjectURL(blob);
+
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "manifestation-os-backup.json";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+    toast(
+      "System exported."
+    );
+  }
+
+
+  /* =====================================================
+     IMPORT
+  ===================================================== */
+
+  function importData(event) {
+
+    const file =
+      event.target.files[0];
+
+    if (!file) return;
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(e) {
+
+        try {
+
+          const imported =
+            JSON.parse(
+              e.target.result
+            );
+
+
+          state = {
+            ...structuredClone(
+              defaultState
+            ),
+            ...imported
+          };
+
+
+          saveState(false);
+
+          populateFields();
+
+          renderEverything();
+
+          toast(
+            "System imported successfully."
+          );
+
+        } catch {
+
+          toast(
+            "Invalid JSON file."
+          );
+
+        }
+
+      };
+
+
+    reader.readAsText(file);
+  }
+
+
+  /* =====================================================
+     RESET
+  ===================================================== */
+
+  function resetSystem() {
+
+    const confirmed =
+      confirm(
+        "Reset Manifestation OS completely? This cannot be undone unless you have an export."
+      );
+
+
+    if (!confirmed) return;
+
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+
+    state =
+      structuredClone(
+        defaultState
+      );
+
+
+    populateFields();
+
+    renderEverything();
+
+    toast(
+      "System reset."
+    );
+  }
+
+
+  /* =====================================================
+     UTILITIES
+  ===================================================== */
+
+  function toast(message) {
+
+    const element =
+      document.getElementById(
+        "toast"
+      );
+
+
+    element.textContent =
+      message;
+
+
+    element.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      window.__toastTimer
+    );
+
+
+    window.__toastTimer =
+      setTimeout(
+        () => {
+
+          element.classList.remove(
+            "show"
+          );
+
+        },
+        2800
+      );
+  }
+
+
+  function escapeHTML(value) {
+
+    return String(value ?? "")
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+  }
 
 </script>
 
