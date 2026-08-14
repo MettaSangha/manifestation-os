@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Manifestation OS</title>
+
+  <style>
+    :root {
+      --bg: #07090d;
+      --surface: #0e1219;
+      --surface-2: #151a23;
+      --border: #252c37;
+      --text: #f4f6fa;
+      --muted: #8f99a8;
+      --green: #b8ff6a;
+      --blue: #79a7ff;
+      --red: #ff7182;
+      --max-width: 1150px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% 0%,
+          rgba(121, 167, 255, 0.10),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(184, 255, 106, 0.08),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 88vh;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      color: var(--green);
+
+      font-size: 0.75rem;
+      font-weight: 800;
+
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 20px 0 30px;
+
+      font-size: clamp(3.5rem, 10vw, 8rem);
+
+      line-height: 0.86;
+
+      letter-spacing: -0.075em;
+    }
+
+    .hero-description {
+      max-width: 800px;
+
+      color: var(--muted);
+
+      font-size: clamp(1rem, 2vw, 1.3rem);
+    }
+
+    .master-loop {
+      margin-top: 45px;
+
+      padding: 24px;
+
+      max-width: 950px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      background: rgba(14, 18, 25, 0.85);
+
+      color: var(--green);
+
+      font-weight: 800;
+
+      letter-spacing: 0.03em;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      position: sticky;
+      top: 0;
+
+      z-index: 100;
+
+      backdrop-filter: blur(18px);
+
+      background: rgba(7, 9, 13, 0.8);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+
+      gap: 20px;
+
+      overflow-x: auto;
+
+      padding: 14px 0;
+    }
+
+    nav a {
+      white-space: nowrap;
+
+      color: var(--muted);
+
+      text-decoration: none;
+
+      font-size: 0.85rem;
+      font-weight: 600;
+
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-header {
+      margin-bottom: 35px;
+    }
+
+    .section-number {
+      margin-bottom: 8px;
+
+      color: var(--green);
+
+      font-size: 0.75rem;
+      font-weight: 900;
+
+      letter-spacing: 0.15em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+
+      line-height: 1;
+
+      letter-spacing: -0.05em;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+
+      font-size: 1.15rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 780px;
+
+      margin-top: 15px;
+
+      font-size: 1.05rem;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 16px;
+    }
+
+    .grid.two {
+      grid-template-columns:
+        repeat(2, 1fr);
+    }
+
+    .card {
+      padding: 26px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(21, 26, 36, 0.95),
+          rgba(11, 14, 20, 0.95)
+        );
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(184, 255, 106, 0.35);
+
+      box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .card strong {
+      color: var(--green);
+    }
+
+    /* =========================
+       QUOTES
+    ========================= */
+
+    .quote {
+      margin: 30px 0;
+
+      padding: 12px 0 12px 22px;
+
+      border-left: 3px solid var(--green);
+
+      font-size: 1.25rem;
+
+      font-weight: 700;
+    }
+
+    /* =========================
+       FORMULA
+    ========================= */
+
+    .formula {
+      margin: 35px 0;
+
+      padding: 30px;
+
+      border: 1px solid var(--green);
+
+      border-radius: 20px;
+
+      background: rgba(184, 255, 106, 0.035);
+
+      color: var(--green);
+
+      text-align: center;
+
+      font-size: clamp(1rem, 2vw, 1.35rem);
+
+      font-weight: 900;
+    }
+
+    /* =========================
+       STACK
+    ========================= */
+
+    .stack {
+      max-width: 850px;
+
+      margin: 30px auto;
+    }
+
+    .stack-step {
+      display: grid;
+
+      grid-template-columns: 65px 1fr;
+
+      gap: 20px;
+
+      align-items: center;
+
+      padding: 20px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stack-step:last-child {
+      border-bottom: none;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--surface-2);
+
+      border: 1px solid var(--border);
+
+      color: var(--green);
+
+      font-weight: 900;
+    }
+
+    /* =========================
+       IF / THEN
+    ========================= */
+
+    .rules {
+      display: grid;
+
+      gap: 12px;
+    }
+
+    .rule {
+      padding: 18px 20px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+    .rule b:first-child {
+      color: var(--blue);
+    }
+
+    .rule b:last-child {
+      color: var(--green);
+    }
+
+    /* =========================
+       PROTOCOL
+    ========================= */
+
+    .protocol {
+      overflow: hidden;
+
+      background: rgba(14, 18, 25, 0.9);
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+    }
+
+    .protocol + .protocol {
+      margin-top: 20px;
+    }
+
+    .protocol-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 20px;
+
+      padding: 24px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .protocol-header strong {
+      font-size: 1.1rem;
+    }
+
+    .protocol-header span {
+      color: var(--muted);
+
+      font-size: 0.85rem;
+    }
+
+    .protocol-row {
+      display: grid;
+
+      grid-template-columns: 130px 1fr;
+
+      gap: 20px;
+
+      padding: 20px 24px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .protocol-row:last-child {
+      border-bottom: none;
+    }
+
+    .time {
+      color: var(--green);
+
+      font-weight: 900;
+    }
+
+    /* =========================
+       SCORE
+    ========================= */
+
+    .score-card {
+      padding: 26px;
+
+      background: var(--surface);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 15px;
+
+      text-align: left;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      color: var(--muted);
+
+      font-weight: 600;
+    }
+
+    input[type="number"] {
+      width: 75px;
+
+      padding: 9px;
+
+      border-radius: 8px;
+
+      border: 1px solid var(--border);
+
+      background: var(--surface-2);
+
+      color: var(--text);
+
+      font-weight: 800;
+    }
+
+    .total {
+      margin-top: 20px;
+
+      padding: 18px;
+
+      border-radius: 12px;
+
+      background: var(--surface-2);
+
+      font-weight: 800;
+    }
+
+    .total span {
+      color: var(--green);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 100px 0;
+
+      border-top: 1px solid var(--border);
+
+      text-align: center;
+    }
+
+    footer h2 {
+      margin: 15px 0;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .grid,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .protocol-row {
+        grid-template-columns: 1fr;
+
+        gap: 5px;
+      }
+
+      .stack-step {
+        grid-template-columns: 55px 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Identity • Reality • Feedback
+      </div>
+
+      <h1>
+        MANIFESTATION<br>
+        OS
+      </h1>
+
+      <p class="hero-description">
+        A practical operating system for turning desire into identity,
+        identity into action, action into evidence, and evidence into
+        a continuously improving reality.
+      </p>
+
+      <div class="master-loop">
+
+        DESIRE →
+        IDENTITY →
+        ASSUMPTION →
+        STATE →
+        ATTENTION →
+        ACTION →
+        EVIDENCE →
+        FEEDBACK →
+        REVISION →
+        IDENTITY
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       NAV
+  ========================= -->
+
+  <nav>
+
+    <div class="container">
+
+      <a href="#define">Define</a>
+      <a href="#identity">Identity</a>
+      <a href="#assumption">Assumption</a>
+      <a href="#state">State</a>
+      <a href="#attention">Attention</a>
+      <a href="#action">Action</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#daily">Daily OS</a>
+      <a href="#score">M-Score</a>
+
+    </div>
+
+  </nav>
+
+
+  <main>
+
+    <!-- =========================
+         01 DEFINE
+    ========================= -->
+
+    <section id="define">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            01 — DEFINE
+          </div>
+
+          <h2>
+            Start with the reality.
+          </h2>
+
+          <p class="lead">
+            Don't begin by asking what you should manifest.
+            Define the reality that would meaningfully change your life.
+          </p>
+
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Desire</h3>
+            <p>
+              What do I actually want?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Why</h3>
+            <p>
+              Why does it matter?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>End State</h3>
+            <p>
+              What does fulfilled reality look like?
+            </p>
+          </article>
+
+        </div>
+
+        <div class="quote">
+
+          The objective is not merely to desire an outcome.
+          It is to define a reality that can be translated
+          into measurable evidence.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         02 IDENTITY
+    ========================= -->
+
+    <section id="identity">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            02 — IDENTITY ENGINE
+          </div>
+
+          <h2>
+            Become the source of the outcome.
+          </h2>
+
+          <p class="lead">
+            Reverse-engineer the person who naturally produces
+            the reality you want.
+          </p>
+
+        </div>
+
+        <div class="grid two">
+
+          <article class="card">
+
+            <h3>I AM</h3>
+
+            <p>
+              <strong>Builder.</strong><br>
+              Owner.<br>
+              Researcher.<br>
+              Operator.<br>
+              Problem solver.<br>
+              Long-term thinker.
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Standards</h3>
+
+            <p>
+              I don't wait for motivation.
+              I don't confuse temporary failure with identity.
+              I don't consume endlessly without producing.
+            </p>
+
+          </article>
+
+        </div>
+
+        <div class="formula">
+
+          Don't manifest the outcome.
+          Manifest the identity capable of repeatedly producing the outcome.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         03 ASSUMPTION
+    ========================= -->
+
+    <section id="assumption">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            03 — ASSUMPTION ENGINE
+          </div>
+
+          <h2>
+            Install the operating beliefs.
+          </h2>
+
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+
+            <p>
+              Instead of:
+              <strong>“I hope I become successful.”</strong>
+            </p>
+
+            <br>
+
+            <p>
+              Use:
+              <strong>“I am someone who figures things out.”</strong>
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <p>
+              Instead of:
+              <strong>“I need an opportunity.”</strong>
+            </p>
+
+            <br>
+
+            <p>
+              Use:
+              <strong>
+                “Valuable problems are everywhere;
+                my job is to identify them.”
+              </strong>
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <p>
+              Instead of:
+              <strong>“I'm behind.”</strong>
+            </p>
+
+            <br>
+
+            <p>
+              Use:
+              <strong>
+                “My trajectory matters more than my starting point.”
+              </strong>
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         04 STATE
+    ========================= -->
+
+    <section id="state">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            04 — STATE ENGINE
+          </div>
+
+          <h2>
+            Make the future psychologically familiar.
+          </h2>
+
+          <p class="lead">
+            Enter the state associated with the identity.
+            The target isn't necessarily excitement.
+            It is calm familiarity.
+          </p>
+
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+
+            <h3>Certainty</h3>
+
+            <p>
+              “I can handle this.”
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Abundance</h3>
+
+            <p>
+              “Possibilities exist.”
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Ownership</h3>
+
+            <p>
+              “My next action is mine to choose.”
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         05 ATTENTION
+    ========================= -->
+
+    <section id="attention">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            05 — ATTENTION ENGINE
+          </div>
+
+          <h2>
+            Turn attention into a search algorithm.
+          </h2>
+
+        </div>
+
+        <div class="quote">
+
+          If my desired reality were already emerging,
+          what would I notice today?
+
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+
+            <h3>Problems</h3>
+
+            <p>
+              What expensive problems are people tolerating?
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Leverage</h3>
+
+            <p>
+              What can be automated, delegated,
+              packaged or compounded?
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Signals</h3>
+
+            <p>
+              What evidence suggests the trajectory is improving?
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         06 ACTION
+    ========================= -->
+
+    <section id="action">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            06 — ACTION ENGINE
+          </div>
+
+          <h2>
+            Convert identity into behavior.
+          </h2>
+
+          <p class="lead">
+            Every manifestation target should collapse
+            into one behavior and one concrete action.
+          </p>
+
+        </div>
+
+
+        <div class="stack">
+
+          <div class="stack-step">
+
+            <div class="step-number">
+              01
+            </div>
+
+            <div>
+              <h3>Identity</h3>
+              <p>Builder</p>
+            </div>
+
+          </div>
+
+
+          <div class="stack-step">
+
+            <div class="step-number">
+              02
+            </div>
+
+            <div>
+              <h3>Behavior</h3>
+              <p>Ships continuously</p>
+            </div>
+
+          </div>
+
+
+          <div class="stack-step">
+
+            <div class="step-number">
+              03
+            </div>
+
+            <div>
+              <h3>Action</h3>
+              <p>Build one usable feature today.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="formula">
+
+          What action would make the desired reality
+          more probable today?
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         07 IF THEN
+    ========================= -->
+
+    <section id="ifthen">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            07 — IF / THEN ENGINE
+          </div>
+
+          <h2>
+            Automate the identity.
+          </h2>
+
+        </div>
+
+
+        <div class="rules">
+
+          <div class="rule">
+            <b>IF</b>
+            I feel resistance
+            →
+            <b>THEN</b>
+            work for 10 minutes before deciding whether to stop.
+          </div>
+
+          <div class="rule">
+            <b>IF</b>
+            I discover a promising idea
+            →
+            <b>THEN</b>
+            test it before fantasizing about it.
+          </div>
+
+          <div class="rule">
+            <b>IF</b>
+            an experiment fails
+            →
+            <b>THEN</b>
+            record why and run the next experiment.
+          </div>
+
+          <div class="rule">
+            <b>IF</b>
+            I see an opportunity
+            →
+            <b>THEN</b>
+            investigate it.
+          </div>
+
+          <div class="rule">
+            <b>IF</b>
+            I become distracted
+            →
+            <b>THEN</b>
+            return to the highest-leverage task.
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         08 EVIDENCE
+    ========================= -->
+
+    <section id="evidence">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            08 — EVIDENCE ENGINE
+          </div>
+
+          <h2>
+            Prove the identity through action.
+          </h2>
+
+          <p class="lead">
+            Create an Evidence Ledger.
+            Every day, collect observable proof that
+            the identity is becoming real.
+          </p>
+
+        </div>
+
+
+        <div class="grid">
+
+          <article class="card">
+
+            <h3>Builder</h3>
+
+            <p>
+              I built for two hours.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <h3>Disciplined</h3>
+
+            <p>
+              I completed the hardest task despite resistance.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <h3>Researcher</h3>
+
+            <p>
+              I completed and logged one experiment.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         09 FEEDBACK
+    ========================= -->
+
+    <section id="feedback">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            09 — FEEDBACK ENGINE
+          </div>
+
+          <h2>
+            Let reality improve the strategy.
+          </h2>
+
+          <p class="lead">
+            Identity remains stable.
+            Strategy stays adaptive.
+            Tactics can be discarded.
+          </p>
+
+        </div>
+
+
+        <div class="grid">
+
+          <article class="card">
+
+            <h3>Identity</h3>
+
+            <p>
+              Persistent.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <h3>Strategy</h3>
+
+            <p>
+              Adaptive.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <h3>Tactics</h3>
+
+            <p>
+              Disposable.
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <div class="quote">
+
+          A failed experiment means
+          “the strategy was wrong,”
+          not “I am incapable.”
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         10 DAILY OS
+    ========================= -->
+
+    <section id="daily">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            10 — DAILY OPERATING SYSTEM
+          </div>
+
+          <h2>
+            Run the protocol.
+          </h2>
+
+        </div>
+
+
+        <!-- MORNING -->
+
+        <div class="protocol">
+
+          <div class="protocol-header">
+
+            <strong>
+              Morning Protocol
+            </strong>
+
+            <span>
+              15 minutes
+            </span>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>Identity.</strong>
+              Who am I today?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>End State.</strong>
+              Imagine the completed reality.
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>Feeling.</strong>
+              Experience it as normal.
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>Attention.</strong>
+              What would this version of me notice?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              03 MIN
+            </div>
+
+            <div>
+              <strong>Action.</strong>
+              Select the highest-leverage action.
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>If–Then.</strong>
+              Predict the main obstacle and
+              pre-decide the response.
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02 MIN
+            </div>
+
+            <div>
+              <strong>Commitment.</strong>
+              “Today I produce evidence.”
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- DAY -->
+
+        <div class="protocol">
+
+          <div class="protocol-header">
+
+            <strong>
+              3-Second Loop
+            </strong>
+
+            <span>
+              Throughout the day
+            </span>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              STOP
+            </div>
+
+            <div>
+              What state am I in?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              REMEMBER
+            </div>
+
+            <div>
+              Who am I?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              ACT
+            </div>
+
+            <div>
+              What would that person do now?
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- NIGHT -->
+
+        <div class="protocol">
+
+          <div class="protocol-header">
+
+            <strong>
+              Night Protocol
+            </strong>
+
+            <span>
+              10 minutes
+            </span>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              01
+            </div>
+
+            <div>
+              Who was I today?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              02
+            </div>
+
+            <div>
+              What evidence did I create?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              03
+            </div>
+
+            <div>
+              Where did I act against my identity?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              04
+            </div>
+
+            <div>
+              What did reality teach me?
+            </div>
+
+          </div>
+
+
+          <div class="protocol-row">
+
+            <div class="time">
+              05
+            </div>
+
+            <div>
+              Who am I tomorrow?
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         11 WEEKLY
+    ========================= -->
+
+    <section id="weekly">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            11 — WEEKLY REVIEW
+          </div>
+
+          <h2>
+            Recalibrate the system.
+          </h2>
+
+        </div>
+
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Desire</h3>
+            <p>
+              Is this still what I actually want?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Identity</h3>
+            <p>
+              Am I becoming capable of producing it?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Assumptions</h3>
+            <p>
+              Which beliefs help?
+              Which limit?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Action</h3>
+            <p>
+              Am I actually acting?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Evidence</h3>
+            <p>
+              What measurable progress exists?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Feedback</h3>
+            <p>
+              What is reality telling me?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Strategy</h3>
+            <p>
+              What should change?
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Compounding</h3>
+            <p>
+              What did I create that can keep producing value?
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         12 M SCORE
+    ========================= -->
+
+    <section id="score">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            12 — M-SCORE
+          </div>
+
+          <h2>
+            Find the bottleneck.
+          </h2>
+
+          <p class="lead">
+            Rate each dimension from 0–10.
+            The number is not truth;
+            it is a diagnostic instrument.
+          </p>
+
+        </div>
+
+
+        <div class="score-card">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Dimension</th>
+                <th>Score / 10</th>
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              <tr>
+                <td>Identity</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="8"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>State</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="7"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>Attention</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="8"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>Action</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="8"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>Evidence</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="7"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>Persistence</td>
+
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value="8"
+                    class="score-input"
+                  >
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+
+          <div class="total">
+
+            M-Score:
+
+            <span id="score-total">
+              46 / 60
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         13 MASTER LOOP
+    ========================= -->
+
+    <section id="master">
+
+      <div class="container">
+
+        <div class="section-header">
+
+          <div class="section-number">
+            13 — MASTER LOOP
+          </div>
+
+          <h2>
+            The entire system.
+          </h2>
+
+        </div>
+
+
+        <div class="formula">
+
+          DESIRE →
+          VISION →
+          IDENTITY →
+          ASSUMPTION →
+          STATE →
+          ATTENTION →
+          DECISION →
+          ACTION →
+          EVIDENCE →
+          FEEDBACK →
+          REVISION →
+          STRONGER IDENTITY →
+          COMPOUNDING
+
+        </div>
+
+
+        <div class="quote">
+
+          Imagine the end.
+          Become the person who belongs there.
+          Act from that identity.
+          Create evidence.
+          Let reality correct your strategy,
+          not destroy your self-concept.
+          Repeat until the imagined identity
+          and observable reality converge.
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Manifestation OS
+      </div>
+
+      <h2>
+        Identity → Reality
+      </h2>
+
+      <p>
+        A manifestation framework designed
+        as a continuous feedback system.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    const inputs =
+      document.querySelectorAll(".score-input");
+
+    const total =
+      document.getElementById("score-total");
+
+
+    function updateScore() {
+
+      let sum = 0;
+
+      inputs.forEach(input => {
+
+        let value =
+          Number(input.value) || 0;
+
+        value =
+          Math.max(
+            0,
+            Math.min(10, value)
+          );
+
+        input.value = value;
+
+        sum += value;
+
+      });
+
+      total.textContent =
+        `${sum} / 60`;
+    }
+
+
+    inputs.forEach(input => {
+
+      input.addEventListener(
+        "input",
+        updateScore
+      );
+
+    });
+
+
+    updateScore();
+
+  </script>
+
+</body>
+</html>
